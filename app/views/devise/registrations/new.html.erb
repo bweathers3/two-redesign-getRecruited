@@ -1,39 +1,53 @@
 <h2>Register for Get Recruited</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
 
-  <div class="form-group">
-    <%= f.label "First Name" %><br />
-    <%= f.text_field :firstName, autofocus: true, autocomplete: "off" %>
+<div class="row">
+  <div class="col-md-6">
+    <p>Guidelines for New Accounts</p>
+    <ul>
+      <li>Email addresses must be unique for all Users.</li>
+      <li>We suggest a different email address from the address you are planning to use for an athlete profile.</li>
+      <li>Your password should include letters, numbers and a character.</li>
+    </ul>
   </div>
+  <div class="col-md-5">
 
-  <div class="form-group">
-    <%= f.label "Last Name" %><br />
-    <%= f.text_field :lastName, autofocus: true, autocomplete: "off" %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="form-group">
+        <%= f.label "First Name" %><br />
+        <%= f.text_field :firstName, class: 'form-control', autofocus: true, autocomplete: "off" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "Last Name" %><br />
+        <%= f.text_field :lastName, class: 'form-control', autofocus: true, autocomplete: "off" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, class: 'form-control', autofocus: true, autocomplete: "email" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, class: 'form-control', autocomplete: "off" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, class: 'form-control', autocomplete: "off" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit "Sign up", class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
   </div>
-
-  <div class="form-group">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
