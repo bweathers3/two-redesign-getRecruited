@@ -1,0 +1,5 @@
+<h1>All Athletes</h1>
+
+ <% @athletes.each do |athlete| %>
+   <p><%= link_to athlete.lastName, athlete_path(athlete.id) %></p>
+ <% end %>
