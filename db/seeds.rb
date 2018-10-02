@@ -48,7 +48,7 @@ athletes = Athlete.all
 24.times do
   Sport.create!(
     athlete:      athletes.sample,
-    sport:    ["Mens Swimming", "Womens Swimming", "Mens Diving", "Womens Diving", "Mens Water Polo", "Womens Water Polo" ].sample,
+    sportName:    ["Mens Swimming", "Womens Swimming", "Mens Diving", "Womens Diving", "Mens Water Polo", "Womens Water Polo" ].sample,
     #active:       Faker::Boolean.boolean(0.7)
   )
 end

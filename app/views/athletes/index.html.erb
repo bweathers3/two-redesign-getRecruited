@@ -1,5 +1,11 @@
 <h1>All Athletes</h1>
 
- <% @athletes.each do |athlete| %>
-   <p><%= link_to athlete.lastName, athlete_path(athlete.id) %></p>
- <% end %>
+  <% @athletes.each do |athlete| %>
+    <div class="media">
+       <div class="media-body">
+         <h4 class="media-heading">
+           <p><%= link_to "#{ athlete.firstName + ' ' + athlete.middleName + ' ' + athlete.lastName }", athlete %></p>
+         </h4>
+       </div>
+    </div>   
+  <% end %>
