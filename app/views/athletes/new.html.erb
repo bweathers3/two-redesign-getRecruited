@@ -1,2 +1,5 @@
-<h1>Athletes#new</h1>
-<p>Find me in app/views/athletes/new.html.erb</p>
+<h1>New Athlete</h1>
+
+<%= render 'newAthleteForm', athlete: @athlete %>
+
+<%= link_to 'Back', athletes_path %>

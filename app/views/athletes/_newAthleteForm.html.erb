@@ -1,0 +1,45 @@
+<div class="row">
+   <div class="col-md-6">
+     <p>Guidelines for new athletes</p>
+     <ul>
+       <li>Please enter both a first and last name.</li>
+       <li>Please make sure the year an athlete intends to start school is correct.</li>
+       <li>Make sure you check the box for active.</li>
+     </ul>
+   </div>
+   <div class="col-md-6">
+     <%= form_with(model: athlete, local: true) do |form| %>
+        <% if athlete.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(athlete.errors.count, "error") %> prohibited this athlete from being saved:</h2>
+
+            <ul>
+              <% athlete.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+          <% end %>
+
+          <div class="form-group">
+            <%= form.label "first name" %>
+            <%= form.text_field :firstName, class: 'form-control', id: :athlete_firstName %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label "middle name" %>
+            <%= form.text_field :middleName, class: 'form-control', id: :athlete_middleName %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label "last Name" %>
+            <%= form.text_field :lastName, class: 'form-control', id: :athlete_lastName %>
+          </div>
+
+          <div class="form-group">
+            <%= form.submit "Save", class: 'btn btn-success'  %>
+          </div>
+
+      <% end %>
+    </div>
+  </div>

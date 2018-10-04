@@ -1,2 +1,9 @@
-<h1>Athletes#show</h1>
-<p>Find me in app/views/athletes/show.html.erb</p>
+
+<%= params %>
+
+<h3><%= "#{ @athlete.firstName + ' ' + @athlete.middleName + ' ' + @athlete.lastName }" %></h3>
+
+<div class="col-md-4">
+  <%= link_to "Edit", edit_athlete_path(@athlete), class: 'btn btn-success' %>
+  <%= link_to "Delete Athlete", @athlete, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this athlete?'} %>
+</div>
