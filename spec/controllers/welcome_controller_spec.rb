@@ -1,7 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe WelcomeController, type: :controller do
+  let(:user) { User.create!(
+    firstName:    Faker::Name.first_name, lastName:     Faker::Name.unique.last_name,
+    email:        'rspecTest1@gmail.com', password:     'helloworld' ) }
 
+  before :each do
+    @request.env['devise.mapping'] = Devise.mappings[:user]
+    sign_in user
+  end
 
   describe "GET index" do
     it "renders the index template" do

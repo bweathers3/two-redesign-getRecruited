@@ -33,7 +33,7 @@ users = User.all
 
 15.times do
   Athlete.create!(
-      #user:   users.sample,
+      user:   users.sample,
       firstName:                    Faker::Name.first_name,
       middleName:                   Faker::Name.first_name,
       #preferredName:                Faker::Name.first_name,

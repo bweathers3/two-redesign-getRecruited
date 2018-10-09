@@ -1,6 +1,6 @@
 class AthletesController < ApplicationController
   def index
-    @athletes = Athlete.all
+    @athletes = Athlete.where(user_id: current_user).order(lastName: :asc, firstName: :asc).all
   end
 
   def show
@@ -16,6 +16,7 @@ class AthletesController < ApplicationController
     @athlete.firstName = params[:athlete][:firstName]
     @athlete.middleName = params[:athlete][:middleName]
     @athlete.lastName = params[:athlete][:lastName]
+    @athlete.user = current_user
 
     if @athlete.save
       flash[:notice] = "Athlete was saved successfully."
@@ -47,7 +48,6 @@ class AthletesController < ApplicationController
 
   def destroy
     @athlete = Athlete.find(params[:id])
-
     if @athlete.destroy
       flash[:notice] = "\"#{@athlete.lastName}\" was deleted successfully."
       redirect_to athletes_path
