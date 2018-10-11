@@ -6,7 +6,8 @@ RSpec.describe AthletesController, :type => :controller do
     email:        'rspecTest1@gmail.com', password:     'helloworld' ) }
 
   let(:this_athlete) { Athlete.create!(firstName: Faker::Name.first_name, middleName: Faker::Name.first_name,
-      lastName: Faker::Name.unique.last_name, user: user) }
+      lastName: Faker::Name.unique.last_name, preferredName: Faker::Name.first_name, yearStartingSchool: "Sept. 2018 - May 2019",
+      active: true, user: user) }
 
   before :each do
     @request.env['devise.mapping'] = Devise.mappings[:user]
@@ -46,18 +47,21 @@ RSpec.describe AthletesController, :type => :controller do
   describe "Athlete create" do
     it "increases the number of Ahlete by 1" do
       expect{ post :create, params: { athlete: { firstName: Faker::Name.first_name, middleName: Faker::Name.first_name,
-          lastName: Faker::Name.unique.last_name, user: user } } }.to change(Athlete,:count).by(1)
+          lastName: Faker::Name.unique.last_name, preferredName: Faker::Name.first_name, yearStartingSchool: "Sept. 2018 - May 2019",
+          active: true, user: user } } }.to change(Athlete,:count).by(1)
     end
 
     it "assigns the new athlete to @athlete" do
       post :create, params: { athlete: { firstName: Faker::Name.first_name, middleName: Faker::Name.first_name,
-        lastName: Faker::Name.unique.last_name, user: user } }
+        lastName: Faker::Name.unique.last_name, preferredName: Faker::Name.first_name, yearStartingSchool: "Sept. 2018 - May 2019",
+        active: true, user: user } }
       expect(assigns(:athlete)).to eq Athlete.last
     end
 
     it "redirects to the new athlete" do
       post :create, params: { athlete: { firstName: Faker::Name.first_name, middleName: Faker::Name.first_name,
-        lastName: Faker::Name.unique.last_name, user: user } }
+        lastName: Faker::Name.unique.last_name, preferredName: Faker::Name.first_name, yearStartingSchool: "Sept. 2018 - May 2019",
+        active: true, user: user } }
       expect(response).to redirect_to Athlete.last
     end
   end
@@ -97,6 +101,9 @@ RSpec.describe AthletesController, :type => :controller do
       expect(athlete_instance.firstName).to eq this_athlete.firstName
       expect(athlete_instance.middleName).to eq this_athlete.middleName
       expect(athlete_instance.lastName).to eq this_athlete.lastName
+      expect(athlete_instance.preferredName).to eq this_athlete.preferredName
+      expect(athlete_instance.yearStartingSchool).to eq this_athlete.yearStartingSchool
+      expect(athlete_instance.active).to eq this_athlete.active
     end
   end
 
@@ -105,20 +112,32 @@ RSpec.describe AthletesController, :type => :controller do
       new_firstName = Faker::Name.first_name
       new_middleName = Faker::Name.first_name
       new_lastName = Faker::Name.unique.last_name
+      new_preferredName = Faker::Name.first_name
+      new_yearStartingSchool = "Sept. 2023 - May 2024"
+      new_active = false
 
-      put :update,  params: { id: this_athlete.id, athlete: { firstName: new_firstName, middleName: new_middleName, lastName: new_lastName }}
+      put :update,  params: { id: this_athlete.id, athlete: { firstName: new_firstName, middleName: new_middleName, lastName: new_lastName,
+        preferredName: new_preferredName, yearStartingSchool: new_yearStartingSchool, active: new_active }}
       updated_athlete = assigns(:athlete)
       expect(updated_athlete.id).to eq this_athlete.id
       expect(updated_athlete.firstName).to eq new_firstName
       expect(updated_athlete.middleName).to eq new_middleName
       expect(updated_athlete.lastName).to eq new_lastName
+      expect(updated_athlete.preferredName).to eq new_preferredName
+      expect(updated_athlete.yearStartingSchool).to eq new_yearStartingSchool
+      expect(updated_athlete.active).to eq new_active
     end
 
     it "redirects to the updated post" do
       new_firstName = Faker::Name.first_name
       new_middleName = Faker::Name.first_name
       new_lastName = Faker::Name.unique.last_name
-      put :update,  params: { id: this_athlete.id, athlete: { firstName: new_firstName, middleName: new_middleName, lastName: new_lastName }}
+      new_preferredName = Faker::Name.first_name
+      new_yearStartingSchool = "Sept. 2023 - May 2024"
+      new_active = false
+
+      put :update,  params: { id: this_athlete.id, athlete: { firstName: new_firstName, middleName: new_middleName, lastName: new_lastName,
+         preferredName: new_preferredName, yearStartingSchool: new_yearStartingSchool, active: new_active }}
       expect(response).to redirect_to this_athlete
     end
   end

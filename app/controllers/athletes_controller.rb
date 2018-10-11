@@ -16,6 +16,9 @@ class AthletesController < ApplicationController
     @athlete.firstName = params[:athlete][:firstName]
     @athlete.middleName = params[:athlete][:middleName]
     @athlete.lastName = params[:athlete][:lastName]
+    @athlete.preferredName = params[:athlete][:preferredName]
+    @athlete.yearStartingSchool = params[:athlete][:yearStartingSchool]
+    @athlete.active = params[:athlete][:active]
     @athlete.user = current_user
 
     if @athlete.save
@@ -36,6 +39,9 @@ class AthletesController < ApplicationController
     @athlete.firstName = params[:athlete][:firstName]
     @athlete.middleName = params[:athlete][:middleName]
     @athlete.lastName = params[:athlete][:lastName]
+    @athlete.preferredName = params[:athlete][:preferredName]
+    @athlete.yearStartingSchool = params[:athlete][:yearStartingSchool]
+    @athlete.active = params[:athlete][:active]
 
     if @athlete.save
       flash[:notice] = "Athlete was updated successfully."

@@ -4,5 +4,6 @@ class Athlete < ApplicationRecord
 
   validates :firstName, length: { minimum: 1 }, presence: true
   validates :lastName, length: { minimum: 1 }, presence: true
+  validates :yearStartingSchool, presence: true
   validates :user, presence: true
 end

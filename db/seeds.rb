@@ -36,10 +36,10 @@ users = User.all
       user:   users.sample,
       firstName:                    Faker::Name.first_name,
       middleName:                   Faker::Name.first_name,
-      #preferredName:                Faker::Name.first_name,
-      lastName:                     Faker::Name.unique.last_name
-      #yearPlanningToStartSchool:    'Sept. 2018 - May 2019',
-      #active:                       Faker::Boolean.boolean(0.7)
+      preferredName:                Faker::Name.first_name,
+      lastName:                     Faker::Name.unique.last_name,
+      yearStartingSchool:           'Sept. 2018 - May 2019',
+      active:                       Faker::Boolean.boolean(0.7)
   )
 end
 
@@ -49,7 +49,7 @@ athletes = Athlete.all
   Sport.create!(
     athlete:      athletes.sample,
     sportName:    ["Mens Swimming", "Womens Swimming", "Mens Diving", "Womens Diving", "Mens Water Polo", "Womens Water Polo" ].sample,
-    #active:       Faker::Boolean.boolean(0.7)
+    active:       Faker::Boolean.boolean(0.7)
   )
 end
 

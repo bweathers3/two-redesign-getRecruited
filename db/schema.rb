@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181004191504) do
+ActiveRecord::Schema.define(version: 20181010190224) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,9 @@ ActiveRecord::Schema.define(version: 20181004191504) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.string "preferredName"
+    t.string "yearStartingSchool"
+    t.boolean "active", default: true
     t.index ["user_id"], name: "index_athletes_on_user_id"
   end
 
@@ -30,6 +33,7 @@ ActiveRecord::Schema.define(version: 20181004191504) do
     t.bigint "athlete_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "active", default: true
     t.index ["athlete_id"], name: "index_sports_on_athlete_id"
   end
 

@@ -1,5 +1,6 @@
 <h1>All Athletes</h1>
 
+<div class="col-md-9">
   <% @athletes.each do |athlete| %>
     <div class="media">
        <div class="media-body">
@@ -7,5 +8,11 @@
            <p><%= link_to "#{ athlete.firstName + ' ' + athlete.middleName + ' ' + athlete.lastName }", athlete %></p>
          </h4>
        </div>
-    </div>   
+    </div>
   <% end %>
+</div>
+
+<div class="col-md-3">
+
+  <%= link_to "Add A New Athlete", new_athlete_path(@athlete), class: 'btn btn-success' %>
+</div>
