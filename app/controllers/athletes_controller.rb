@@ -1,6 +1,6 @@
 class AthletesController < ApplicationController
   def index
-    @athletes = Athlete.where(user_id: current_user).order(lastName: :asc, firstName: :asc).all
+    @athletes = Athlete.where(user_id: current_user).order(active: :desc,lastName: :asc, firstName: :asc).all
   end
 
   def show
