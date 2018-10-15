@@ -1,16 +1,29 @@
 <h1>All Athletes</h1>
 
-<div class="col-md-9">
-  <% @athletes.each do |athlete| %>
-    <div class="media">
-       <div class="media-body">
-         <h4 class="media-heading">
-           <p><%= link_to "#{ athlete.firstName + ' ' + athlete.middleName + ' ' + athlete.lastName }", athlete %></p>
-         </h4>
-       </div>
-    </div>
-  <% end %>
-</div>
+
+  <div class="col-md-9">
+    <p class="lead"><% @athletes.each do |athlete| %></p>
+      <div class="media">
+         <div class="media-body">
+           <h4 class="media-heading">
+             <p><%= link_to "#{ athlete.firstName + ' ' + athlete.middleName + ' ' + athlete.lastName }", athlete %></p>
+           </h4>
+             <div class="media">
+               <div class="media-body">
+                 <h4 class="media-heading">
+                   <ul style="list-style-type:none">
+                   <% athlete.sports.each do |sport| %>
+                     <li class="sport-names"><%= sport.sportName %> - <%= sport.active ? "Active" : "Inactive" %><li/> 
+                   <% end %>
+                   </ul>
+                 <h4/>
+              </div>
+           </div>
+         </div>
+      </div>
+    <% end %>
+  </div>
+
 
 <div class="col-md-3">
   <%= link_to "Add A New Athlete", new_athlete_path(@athlete), class: 'btn btn-success' %>
