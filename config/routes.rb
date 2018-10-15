@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  resources :athletes
-  resources :sports
+
+  resources :athletes do
+    resources :sports
+  end
 
   get 'about' => 'welcome#about'
   get 'contact' => 'welcome#contact'

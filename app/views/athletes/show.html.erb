@@ -2,13 +2,16 @@
 <%-# params -%>
 <div class="col-md-7">
   <h3><%= "#{ @athlete.firstName + ' ' + @athlete.middleName + ' ' + @athlete.lastName }" %></h3>
-  <h5><%= "#{ 'Preferred Name:' + ' ' + @athlete.preferredName }" %></h5>
-  <h5><%= "#{ 'Planning to Start School In:' + ' ' + @athlete.yearStartingSchool }" %></h5>
 </div>
 
 <div class="col-md-5">
   <br />
   <%= link_to "Edit", edit_athlete_path(@athlete), class: 'btn btn-success' %>
   <%= link_to "Delete This Athlete", @athlete, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this athlete?'} %>
-  <%= link_to "All Athletes", athletes_path(@athlete), class: 'btn btn-primary' %>
+</div>
+
+<div class="col-md-7">
+  <h5 class="col-md-4 record-title"><%= "#{ 'Preferred Name:' }"%></h5> <h5 class="col-md-8 record-data"><%= "#{ @athlete.preferredName }"%></h5>
+  <h5 class="col-md-4 record-title"><%= "#{ 'Planning to Start School In:' }"%></h5> <h5 class="col-md-8 record-data"><%= "#{ @athlete.yearStartingSchool  }"%></h5>
+
 </div>
