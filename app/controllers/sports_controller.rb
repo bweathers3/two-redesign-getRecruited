@@ -44,13 +44,15 @@ class SportsController < ApplicationController
   def destroy
     @athlete = Athlete.find(params[:athlete_id])
     @sport = Sport.find(params[:id])
+    if !@sport.startSportData?
 
-    if @sport.destroy
-      flash[:notice] = "\"#{@sport.sportName}\" was deleted successfully."
-      redirect_to [@athlete]
-    else
-      flash.now[:alert] = "There was an error deleting the sport."
-      render :show
+      if @sport.destroy
+        flash[:notice] = "\"#{@sport.sportName}\" was deleted successfully."
+        redirect_to [@athlete]
+      else
+        flash.now[:alert] = "There was an error deleting the sport."
+        render :show
+      end
     end
   end
 
