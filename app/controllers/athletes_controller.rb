@@ -12,13 +12,7 @@ class AthletesController < ApplicationController
   end
 
   def create
-    @athlete = Athlete.new
-    @athlete.firstName = params[:athlete][:firstName]
-    @athlete.middleName = params[:athlete][:middleName]
-    @athlete.lastName = params[:athlete][:lastName]
-    @athlete.preferredName = params[:athlete][:preferredName]
-    @athlete.yearStartingSchool = params[:athlete][:yearStartingSchool]
-    @athlete.active = params[:athlete][:active]
+    @athlete = Athlete.new(athlete_params)
     @athlete.user = current_user
 
     if @athlete.save
@@ -36,12 +30,7 @@ class AthletesController < ApplicationController
 
   def update
     @athlete = Athlete.find(params[:id])
-    @athlete.firstName = params[:athlete][:firstName]
-    @athlete.middleName = params[:athlete][:middleName]
-    @athlete.lastName = params[:athlete][:lastName]
-    @athlete.preferredName = params[:athlete][:preferredName]
-    @athlete.yearStartingSchool = params[:athlete][:yearStartingSchool]
-    @athlete.active = params[:athlete][:active]
+    @athlete.assign_attributes(athlete_params)
 
     if @athlete.save
       flash[:notice] = "Athlete was updated successfully."
@@ -61,6 +50,13 @@ class AthletesController < ApplicationController
       flash.now[:alert] = "There was an error deleting the post."
       render :show
     end
+  end
+
+
+  private
+
+  def athlete_params
+    params.require(:athlete).permit(:firstName, :middleName, :lastName, :preferredName, :yearStartingSchool, :active)
   end
 
 end

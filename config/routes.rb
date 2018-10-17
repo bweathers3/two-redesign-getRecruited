@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :athletes do
-    resources :sports
+    resources :sports, except: [:index]
   end
 
   get 'about' => 'welcome#about'
