@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181018193252) do
+ActiveRecord::Schema.define(version: 20181018195524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -156,6 +156,14 @@ ActiveRecord::Schema.define(version: 20181018193252) do
     t.index ["athlete_id"], name: "index_school_addresses_on_athlete_id"
   end
 
+  create_table "siblings", force: :cascade do |t|
+    t.text "siblingNames"
+    t.bigint "athlete_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["athlete_id"], name: "index_siblings_on_athlete_id"
+  end
+
   create_table "sports", force: :cascade do |t|
     t.string "sportName"
     t.bigint "athlete_id"
@@ -195,5 +203,6 @@ ActiveRecord::Schema.define(version: 20181018193252) do
   add_foreign_key "mother_addresses", "athletes"
   add_foreign_key "mother_contacts", "athletes"
   add_foreign_key "school_addresses", "athletes"
+  add_foreign_key "siblings", "athletes"
   add_foreign_key "sports", "athletes"
 end
