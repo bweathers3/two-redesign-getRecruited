@@ -1,62 +1,137 @@
-<div class="row">
-   <div class="col-md-6">
-     <p>Guidelines for new athletes</p>
-     <ul>
-       <li>Please enter both a first and last name.</li>
-       <li>Please make sure the year an athlete intends to start school is correct.</li>
-       <li>Make sure you check the box for active.</li>
-     </ul>
-   </div>
-   <div class="col-md-6">
-     <%= form_with(model: athlete, local: true) do |form| %>
-        <% if athlete.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(athlete.errors.count, "error") %> prohibited this athlete from being saved:</h2>
+<%= form_with(model: athlete, local: true) do |form| %>
+  <div class="row">
+     <div class="col-md-6">
+       <p>Guidelines for new athletes</p>
+       <ul>
+         <li>Please enter both a first and last name.</li>
+         <li>Please make sure the year an athlete intends to start school is correct.</li>
+         <li>Make sure you check the box for active.</li>
+       </ul>
+     </div>
+     <div class="col-md-6">
 
-            <ul>
-              <% athlete.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
+          <% if athlete.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(athlete.errors.count, "error") %> prohibited this athlete from being saved:</h2>
+
+              <ul>
+                <% athlete.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
           <% end %>
 
-          <div class="form-group">
-            <%= form.label "first name" %>
-            <%= form.text_field :firstName, class: 'form-control', id: :athlete_firstName %>
-          </div>
+            <div class="form-group">
+              <%= form.label "first name" %>
+              <%= form.text_field :firstName, class: 'form-control', id: :athlete_firstName %>
+            </div>
 
-          <div class="form-group">
-            <%= form.label "middle name" %>
-            <%= form.text_field :middleName, class: 'form-control', id: :athlete_middleName %>
-          </div>
+            <div class="form-group">
+              <%= form.label "middle name" %>
+              <%= form.text_field :middleName, class: 'form-control', id: :athlete_middleName %>
+            </div>
 
-          <div class="form-group">
-            <%= form.label "last Name" %>
-            <%= form.text_field :lastName, class: 'form-control', id: :athlete_lastName %>
-          </div>
+            <div class="form-group">
+              <%= form.label "last Name" %>
+              <%= form.text_field :lastName, class: 'form-control', id: :athlete_lastName %>
+            </div>
 
-          <div class="form-group">
-            <%= form.label "Perferred Name" %>
-            <%= form.text_field :preferredName, class: 'form-control', id: :athlete_perferredName %>
-          </div>
+            <div class="form-group">
+              <%= form.label "Perferred Name" %>
+              <%= form.text_field :preferredName, class: 'form-control', id: :athlete_perferredName %>
+            </div>
 
-          <div class="form-group">
-            <%= form.label "Year starting school (select one):" %>
-            <%= form.select :yearStartingSchool, [ 'Sept. 2018 - May 2019', 'Sept. 2019 - May 2020',
-              'Sept. 2020 - May 2021', 'Sept. 2021 - May 2022',
-              'Sept. 2022 - May 2023', 'Sept. 2023 - May 2024' ], class: 'form-control', id: :athlete_yearStartingSchool  %>
-          </div>
+            <div class="form-group">
+              <%= form.label "Year starting school (select one):" %>
+              <%= form.select :yearStartingSchool, [ 'Sept. 2018 - May 2019', 'Sept. 2019 - May 2020',
+                'Sept. 2020 - May 2021', 'Sept. 2021 - May 2022',
+                'Sept. 2022 - May 2023', 'Sept. 2023 - May 2024' ], class: 'form-control', id: :athlete_yearStartingSchool  %>
+            </div>
 
-          <div class="form-group">
-            <%= form.label "Active" %>
-            <%= form.check_box :active, class: 'form-control', id: :athlete_active %>
-          </div>
-
-          <div class="form-group">
-            <%= form.submit "Save", class: 'btn btn-success'  %>
-          </div>
-
-      <% end %>
+            <div class="form-group">
+              <%= form.label "Active" %>
+              <%= form.check_box :active, class: 'form-control', id: :athlete_active %>
+            </div>
+      </div>
     </div>
+
+  <h2> Contact Information </h2>
+  <div class="row">
+     <div class="col-md-6">
+       <p>Guidelines for new contact information</p>
+       <ul>
+         <li>Please enter both a first and last name.</li>
+         <li>Please make sure the year an athlete intends to start school is correct.</li>
+         <li>Make sure you check the box for active.</li>
+       </ul>
+     </div>
+     <div class="col-md-6">
+       <%= form.fields_for :contact do |contactForm| %>
+            <div class="form-group">
+              <%= contactForm.label "Email" %>
+              <%= contactForm.text_field :email, class: 'form-control', id: :contact_email %>
+            </div>
+
+            <div class="form-group">
+              <%= contactForm.label "Phone" %>
+              <%= contactForm.text_field :phone, class: 'form-control', id: :contact_phone %>
+            </div>
+        <% end %>
+      </div>
+    </div>
+
+
+    <h2> Address Information </h2>
+    <div class="row">
+       <div class="col-md-6">
+         <p>Guidelines for new address information</p>
+         <ul>
+           <li>Please enter both a first and last name.</li>
+           <li>Please make sure the year an athlete intends to start school is correct.</li>
+           <li>Make sure you check the box for active.</li>
+         </ul>
+       </div>
+       <div class="col-md-6">
+         <%= form.fields_for :address do |addressForm| %>
+            <div class="form-group">
+              <%= addressForm.label "Street" %>
+              <%= addressForm.text_field :street, class: 'form-control', id: :address_street %>
+            </div>
+
+            <div class="form-group">
+              <%= addressForm.label "Street2" %>
+              <%= addressForm.text_field :street2, class: 'form-control', id: :address_street2 %>
+            </div>
+
+            <div class="form-group">
+              <%= addressForm.label "City" %>
+              <%= addressForm.text_field :city, class: 'form-control', id: :address_city %>
+            </div>
+
+            <div class="form-group">
+              <%= addressForm.label "State" %>
+              <%= addressForm.text_field :state, class: 'form-control', id: :address_state %>
+            </div>
+
+            <div class="form-group">
+              <%= addressForm.label "Zip/Postal Code" %>
+              <%= addressForm.text_field :zip, class: 'form-control', id: :address_zip %>
+            </div>
+
+            <div class="form-group">
+              <%= addressForm.label "Country" %>
+              <%= addressForm.text_field :country, class: 'form-control', id: :address_country %>
+            </div>
+
+         <% end %>
+      </div>
+    </div>
+
+
+
+  <div class="form-group">
+    <%= form.submit "Save", class: 'btn btn-success'  %>
   </div>
+
+<% end %>

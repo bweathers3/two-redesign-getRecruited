@@ -1,0 +1,35 @@
+<div class="row">
+   <div class="col-md-6">
+     <p>Guidelines for new contact information</p>
+     <ul>
+       <li>Please enter both a first and last name.</li>
+       <li>Please make sure the year an athlete intends to start school is correct.</li>
+       <li>Make sure you check the box for active.</li>
+     </ul>
+   </div>
+   <div class="col-md-6">
+     <%= form.fields_for (model: contact, local: true) do |contactForm| %>
+        <% if contact.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(athlete.errors.count, "error") %> prohibited this contact from being saved:</h2>
+
+            <ul>
+              <% contact.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+          <% end %>
+
+          <div class="form-group">
+            <%= contactForm.label "Email" %>
+            <%= contactForm.text_field :email, class: 'form-control', id: :contact_email %>
+          </div>
+
+          <div class="form-group">
+            <%= contactForm.label "Phone" %>
+            <%= contactFormtext_field :phone, class: 'form-control', id: :contact_ %>
+          </div>
+      <% end %>
+    </div>
+  </div>

@@ -1,4 +1,5 @@
 class AthletesController < ApplicationController
+
   def index
     @athletes = Athlete.where(user_id: current_user).order(active: :desc,lastName: :asc, firstName: :asc).all
   end
@@ -9,6 +10,15 @@ class AthletesController < ApplicationController
 
   def new
     @athlete = Athlete.new
+    @athlete.contact.build
+    @athlete.address.build
+  end
+
+
+  def edit
+    @athlete = Athlete.find(params[:id])
+    @athlete.contact.build if @athlete.contact.nil?
+    @athlete.address.build if @athlete.address.nil?
   end
 
   def create
@@ -22,10 +32,6 @@ class AthletesController < ApplicationController
       flash.now[:alert] = "There was an error saving the athlete. Please try again."
       render :new
     end
-  end
-
-  def edit
-    @athlete = Athlete.find(params[:id])
   end
 
   def update
@@ -56,7 +62,9 @@ class AthletesController < ApplicationController
   private
 
   def athlete_params
-    params.require(:athlete).permit(:firstName, :middleName, :lastName, :preferredName, :yearStartingSchool, :active)
+    params.require(:athlete).permit(:firstName, :middleName, :lastName, :preferredName, :yearStartingSchool, :active,
+      :contact_attributes=> [:phone, :email],
+      :address_attributes=> [:street, :street2, :city, :state, :zip, :country] )
   end
 
 end

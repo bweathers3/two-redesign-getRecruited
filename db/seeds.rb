@@ -45,6 +45,28 @@ end
 
 athletes = Athlete.all
 
+athletes.each do |item|
+  Contact.create!(
+  athlete:      item,
+  email:        Faker::Internet.safe_email,
+  phone:        Faker::PhoneNumber.phone_number
+)
+end
+
+athletes.each do |item|
+  Address.create!(
+  athlete:      item,
+  street:       Faker::Address.street_address,
+  street2:      Faker::Address.secondary_address,
+  city:         Faker::Address.city,
+  state:        Faker::Address.state,
+  zip:          Faker::Address.zip_code,
+  country:      Faker::Address.country
+)
+end
+
+
+
 24.times do
   Sport.create!(
     athlete:      athletes.sample,

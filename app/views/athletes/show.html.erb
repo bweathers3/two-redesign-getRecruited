@@ -16,7 +16,19 @@
   <h5 class="col-md-4 record-title"><%= "#{ 'Planning to Start School In:' }"%></h5> <h5 class="col-md-8 record-data"><%= "#{ @athlete.yearStartingSchool  }" %></h5>
 </div>
 
-<div class="col-md-9">
-  <h4 class="record-title">Athlete's Sports</h4>
+<div class="col-md-12">
+  <h1> </h1>
+  <h4 class="record-division">Athlete's Sports</h4>
   <%= render @athlete.sports %>
+</div>
+
+<div class="col-md-12">
+  <h1> </h1>
+  <h4 class="record-division">Athlete's Contact Information</h4>
+  <%= render @athlete.contact %>
+</div>
+
+<div class="col-md-12">
+  <h3> </h3>
+  <%= render @athlete.address %>
 </div>
