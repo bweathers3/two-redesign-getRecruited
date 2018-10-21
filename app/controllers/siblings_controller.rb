@@ -1,0 +1,2 @@
+class SiblingsController < ApplicationController
+end

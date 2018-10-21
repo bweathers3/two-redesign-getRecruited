@@ -1,0 +1,8 @@
+<div class="media">
+   <div class="media-body">
+     <h5 class="col-md-2 record-title"><%= "#{ 'Current Address:' }"%></h5> <h5 class="col-md-10 record-data"><%= "#{ @athlete.current_address.street  }"  %></h5>
+     <h5 class="col-md-2 record-title"><%= "#{ ' ' }"%></h5> <h5 class="col-md-10 record-data"><%= "#{ @athlete.current_address.street2  }" %></h5>
+     <h5 class="col-md-2 record-title"><%= "#{ ' ' }"%></h5> <h5 class="col-md-10 record-data"><%= "#{ @athlete.current_address.city + ", " +  @athlete.current_address.state + '   ' + @athlete.current_address.zip  }" %></h5>
+     <h5 class="col-md-2 record-title"><%= "#{ ' ' }"%></h5> <h5 class="col-md-10 record-data"><%= "#{ @athlete.current_address.country  }" %></h5>
+   </div>
+</div>

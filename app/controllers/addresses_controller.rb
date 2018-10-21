@@ -15,7 +15,7 @@ class AddressesController < ApplicationController
 
     if @address.save
       flash[:notice] = "A new address was saved successfully."
-      redirect_to [@address]
+      redirect_to [@athlete]
     else
       flash.now[:alert] = "There was an error saving the new address. Please try again."
       render :new
@@ -45,7 +45,7 @@ class AddressesController < ApplicationController
     @address = Address.find(params[:id])
     if !@sport.startSportData?
 
-      if @contact.destroy
+      if @address.destroy
         flash[:notice] = "\"#{@address.street}\" was deleted successfully."
         redirect_to [@athlete]
       else

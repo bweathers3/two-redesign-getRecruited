@@ -12,6 +12,13 @@ class AthletesController < ApplicationController
     @athlete = Athlete.new
     @athlete.contact.build
     @athlete.address.build
+    @athlete.current_address.build
+    @athlete.father_address.build
+    @athlete.father_contact.build
+    @athlete.mother_address.build
+    @athlete.mother_contact.build
+    @athlete.school_address.build
+    @athlete.sibling.build
   end
 
 
@@ -19,6 +26,13 @@ class AthletesController < ApplicationController
     @athlete = Athlete.find(params[:id])
     @athlete.contact.build if @athlete.contact.nil?
     @athlete.address.build if @athlete.address.nil?
+    @athlete.current_address.build  if @athlete.current_address.nil?
+    @athlete.father_address.build  if @athlete.father_address.nil?
+    @athlete.father_contact.build  if @athlete.father_contact.nil?
+    @athlete.mother_address.build  if @athlete.mother_address.nil?
+    @athlete.mother_contact.build  if @athlete.mother_contact.nil?
+    @athlete.school_address.build  if @athlete.school_address.nil?
+    @athlete.sibling.build  if @athlete.sibling.nil?
   end
 
   def create
@@ -64,7 +78,15 @@ class AthletesController < ApplicationController
   def athlete_params
     params.require(:athlete).permit(:firstName, :middleName, :lastName, :preferredName, :yearStartingSchool, :active,
       :contact_attributes=> [:phone, :email],
-      :address_attributes=> [:street, :street2, :city, :state, :zip, :country] )
+      :address_attributes=> [:street, :street2, :city, :state, :zip, :country],
+      :current_address_attributes=> [:street, :street2, :city, :state, :zip, :country],
+      :father_address_attributes=> [:street, :street2, :city, :state, :zip, :country],
+      :father_contact_attributes=> [:firstName, :middleName, :phone, :email],
+      :mother_address_attributes=> [:street, :street2, :city, :state, :zip, :country],
+      :mother_contact_attributes=> [:firstName, :middleName, :phone, :email],
+      :school_address_attributes=> [:street, :street2, :city, :state, :zip, :country],
+      :sibling_attributes=> [:siblingNames]
+    )
   end
 
 end

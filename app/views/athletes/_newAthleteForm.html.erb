@@ -128,6 +128,281 @@
       </div>
     </div>
 
+    <h2> Current Address Information </h2>
+    <div class="row">
+       <div class="col-md-6">
+         <p>Guidelines for new address information</p>
+         <ul>
+           <li>Please enter both a first and last name.</li>
+           <li>Please make sure the year an athlete intends to start school is correct.</li>
+           <li>Make sure you check the box for active.</li>
+         </ul>
+       </div>
+       <div class="col-md-6">
+         <%= form.fields_for :current_address do |current_addressForm| %>
+            <div class="form-group">
+              <%= current_addressForm.label "Street" %>
+              <%= current_addressForm.text_field :street, class: 'form-control', id: :current_address_street %>
+            </div>
+
+            <div class="form-group">
+              <%= current_addressForm.label "Street2" %>
+              <%= current_addressForm.text_field :street2, class: 'form-control', id: :current_address_street2 %>
+            </div>
+
+            <div class="form-group">
+              <%= current_addressForm.label "City" %>
+              <%= current_addressForm.text_field :city, class: 'form-control', id: :current_address_city %>
+            </div>
+
+            <div class="form-group">
+              <%= current_addressForm.label "State" %>
+              <%= current_addressForm.text_field :state, class: 'form-control', id: :current_address_state %>
+            </div>
+
+            <div class="form-group">
+              <%= current_addressForm.label "Zip/Postal Code" %>
+              <%= current_addressForm.text_field :zip, class: 'form-control', id: :current_address_zip %>
+            </div>
+
+            <div class="form-group">
+              <%= current_addressForm.label "Country" %>
+              <%= current_addressForm.text_field :country, class: 'form-control', id: :current_address_country %>
+            </div>
+
+         <% end %>
+      </div>
+    </div>
+
+    <h2> Parent 1 Contact Information </h2>
+    <div class="row">
+       <div class="col-md-6">
+         <p>Guidelines for new Parent 1 contact information</p>
+         <ul>
+           <li>Please enter both a first and last name.</li>
+           <li>Please make sure the year an athlete intends to start school is correct.</li>
+           <li>Make sure you check the box for active.</li>
+         </ul>
+       </div>
+       <div class="col-md-6">
+         <%= form.fields_for :mother_contact do |mother_contactForm| %>
+            <div class="form-group">
+              <%= mother_contactForm.label "First Name" %>
+              <%= mother_contactForm.text_field :firstName, class: 'form-control', id: :mother_contact_firstName %>
+            </div>
+
+            <div class="form-group">
+              <%= mother_contactForm.label "Last Name" %>
+              <%= mother_contactForm.text_field :lastName, class: 'form-control', id: :mother_contact_lastName %>
+            </div>
+
+            <div class="form-group">
+              <%= mother_contactForm.label "Email" %>
+              <%= mother_contactForm.text_field :email, class: 'form-control', id: :mother_contact_email %>
+            </div>
+
+            <div class="form-group">
+              <%= mother_contactForm.label "Phone" %>
+              <%= mother_contactForm.text_field :phone, class: 'form-control', id: :mother_contact_phone %>
+            </div>
+
+         <% end %>
+      </div>
+    </div>
+
+    <h2> Parent 1 Address Information </h2>
+    <div class="row">
+       <div class="col-md-6">
+         <p>Guidelines for new Parent 1 address information</p>
+         <ul>
+           <li>Please enter both a first and last name.</li>
+           <li>Please make sure the year an athlete intends to start school is correct.</li>
+           <li>Make sure you check the box for active.</li>
+         </ul>
+       </div>
+       <div class="col-md-6">
+         <%= form.fields_for :mother_address do |mother_addressForm| %>
+            <div class="form-group">
+              <%= mother_addressForm.label "Street" %>
+              <%= mother_addressForm.text_field :street, class: 'form-control', id: :mother_address_street %>
+            </div>
+
+            <div class="form-group">
+              <%= mother_addressForm.label "Street2" %>
+              <%= mother_addressForm.text_field :street2, class: 'form-control', id: :mother_address_street2 %>
+            </div>
+
+            <div class="form-group">
+              <%= mother_addressForm.label "City" %>
+              <%= mother_addressForm.text_field :city, class: 'form-control', id: :mother_address_city %>
+            </div>
+
+            <div class="form-group">
+              <%= mother_addressForm.label "State" %>
+              <%= mother_addressForm.text_field :state, class: 'form-control', id: :mother_address_state %>
+            </div>
+
+            <div class="form-group">
+              <%= mother_addressForm.label "Zip/Postal Code" %>
+              <%= mother_addressForm.text_field :zip, class: 'form-control', id: :mother_address_zip %>
+            </div>
+
+            <div class="form-group">
+              <%= mother_addressForm.label "Country" %>
+              <%= mother_addressForm.text_field :country, class: 'form-control', id: :mother_address_country %>
+            </div>
+
+         <% end %>
+      </div>
+    </div>
+
+    <h2> Parent 2 Contact Information </h2>
+    <div class="row">
+       <div class="col-md-6">
+         <p>Guidelines for new Parent 2 contact information</p>
+         <ul>
+           <li>Please enter both a first and last name.</li>
+           <li>Please make sure the year an athlete intends to start school is correct.</li>
+           <li>Make sure you check the box for active.</li>
+         </ul>
+       </div>
+       <div class="col-md-6">
+         <%= form.fields_for :father_contact do |father_contactForm| %>
+            <div class="form-group">
+              <%= father_contactForm.label "First Name" %>
+              <%= father_contactForm.text_field :firstName, class: 'form-control', id: :father_contact_firstName %>
+            </div>
+
+            <div class="form-group">
+              <%= father_contactForm.label "Last Name" %>
+              <%= father_contactForm.text_field :lastName, class: 'form-control', id: :father_contact_lastName %>
+            </div>
+
+            <div class="form-group">
+              <%= father_contactForm.label "Email" %>
+              <%= father_contactForm.text_field :email, class: 'form-control', id: :father_contact_email %>
+            </div>
+
+            <div class="form-group">
+              <%= father_contactForm.label "Phone" %>
+              <%= father_contactForm.text_field :phone, class: 'form-control', id: :father_contact_phone %>
+            </div>
+
+         <% end %>
+      </div>
+    </div>
+
+    <h2> Parent 2 Address Information </h2>
+    <div class="row">
+       <div class="col-md-6">
+         <p>Guidelines for new Parent 2 address information</p>
+         <ul>
+           <li>Please enter both a first and last name.</li>
+           <li>Please make sure the year an athlete intends to start school is correct.</li>
+           <li>Make sure you check the box for active.</li>
+         </ul>
+       </div>
+       <div class="col-md-6">
+         <%= form.fields_for :father_address do |father_addressForm| %>
+            <div class="form-group">
+              <%= father_addressForm.label "Street" %>
+              <%= father_addressForm.text_field :street, class: 'form-control', id: :father_address_street %>
+            </div>
+
+            <div class="form-group">
+              <%= father_addressForm.label "Street2" %>
+              <%= father_addressForm.text_field :street2, class: 'form-control', id: :father_address_street2 %>
+            </div>
+
+            <div class="form-group">
+              <%= father_addressForm.label "City" %>
+              <%= father_addressForm.text_field :city, class: 'form-control', id: :father_address_city %>
+            </div>
+
+            <div class="form-group">
+              <%= father_addressForm.label "State" %>
+              <%= father_addressForm.text_field :state, class: 'form-control', id: :father_address_state %>
+            </div>
+
+            <div class="form-group">
+              <%= father_addressForm.label "Zip/Postal Code" %>
+              <%= father_addressForm.text_field :zip, class: 'form-control', id: :father_address_zip %>
+            </div>
+
+            <div class="form-group">
+              <%= father_addressForm.label "Country" %>
+              <%= father_addressForm.text_field :country, class: 'form-control', id: :father_address_country %>
+            </div>
+
+         <% end %>
+      </div>
+    </div>
+
+    <h2> School Address Information </h2>
+    <div class="row">
+       <div class="col-md-6">
+         <p>Guidelines for new School address information</p>
+         <ul>
+           <li>Please enter both a first and last name.</li>
+           <li>Please make sure the year an athlete intends to start school is correct.</li>
+           <li>Make sure you check the box for active.</li>
+         </ul>
+       </div>
+       <div class="col-md-6">
+         <%= form.fields_for :school_address do |school_addressForm| %>
+            <div class="form-group">
+              <%= school_addressForm.label "Street" %>
+              <%= school_addressForm.text_field :street, class: 'form-control', id: :school_address_street %>
+            </div>
+
+            <div class="form-group">
+              <%= school_addressForm.label "Street2" %>
+              <%= school_addressForm.text_field :street2, class: 'form-control', id: :school_address_street2 %>
+            </div>
+
+            <div class="form-group">
+              <%= school_addressForm.label "City" %>
+              <%= school_addressForm.text_field :city, class: 'form-control', id: :school_address_city %>
+            </div>
+
+            <div class="form-group">
+              <%= school_addressForm.label "State" %>
+              <%= school_addressForm.text_field :state, class: 'form-control', id: :school_address_state %>
+            </div>
+
+            <div class="form-group">
+              <%= school_addressForm.label "Zip/Postal Code" %>
+              <%= school_addressForm.text_field :zip, class: 'form-control', id: :school_address_zip %>
+            </div>
+
+            <div class="form-group">
+              <%= school_addressForm.label "Country" %>
+              <%= school_addressForm.text_field :country, class: 'form-control', id: :school_address_country %>
+            </div>
+
+         <% end %>
+      </div>
+    </div>
+
+    <h2> Sibling Information </h2>
+    <div class="row">
+       <div class="col-md-6">
+         <p>Guidelines for new Sibling information</p>
+         <ul>
+           <li>Please enter both a first and last name.</li>
+           <li>Please make sure the year an athlete intends to start school is correct.</li>
+           <li>Make sure you check the box for active.</li>
+         </ul>
+       </div>
+       <div class="col-md-6">
+         <%= form.fields_for :sibling do |siblingForm| %>
+            <div class="form-group">
+              <%= siblingForm.label "Sibling Information" %>
+              <%= siblingForm.text_field :siblingNames, class: 'form-control', id: :siblingNames %>
+            </div>
+         <% end %>
+      </div>
+    </div>
 
 
   <div class="form-group">

@@ -1,0 +1,2 @@
+class MotherContactsController < ApplicationController
+end

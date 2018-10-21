@@ -1,0 +1,2 @@
+class FatherContactsController < ApplicationController
+end

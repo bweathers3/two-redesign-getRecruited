@@ -61,7 +61,83 @@ athletes.each do |item|
   city:         Faker::Address.city,
   state:        Faker::Address.state,
   zip:          Faker::Address.zip_code,
+  country:      "Canada"
+)
+end
+
+athletes.each do |item|
+  CurrentAddress.create!(
+  athlete:      item,
+  street:       Faker::Address.street_address,
+  street2:      Faker::Address.secondary_address,
+  city:         Faker::Address.city,
+  state:        Faker::Address.state,
+  zip:          Faker::Address.zip_code,
+  country:      "USA"
+)
+end
+
+athletes.each do |item|
+  FatherContact.create!(
+  athlete:      item,
+  firstName:    Faker::Name.first_name,
+  lastName:     Faker::Name.unique.last_name,
+  email:        Faker::Internet.safe_email,
+  phone:        Faker::PhoneNumber.phone_number
+)
+end
+
+athletes.each do |item|
+  FatherAddress.create!(
+  athlete:      item,
+  street:       Faker::Address.street_address,
+  street2:      Faker::Address.secondary_address,
+  city:         Faker::Address.city,
+  state:        Faker::Address.state,
+  zip:          Faker::Address.zip_code,
   country:      Faker::Address.country
+)
+end
+
+athletes.each do |item|
+  MotherContact.create!(
+  athlete:      item,
+  firstName:    Faker::Name.first_name,
+  lastName:     Faker::Name.unique.last_name,
+  email:        Faker::Internet.safe_email,
+  phone:        Faker::PhoneNumber.phone_number
+)
+end
+
+athletes.each do |item|
+  MotherAddress.create!(
+  athlete:      item,
+  street:       Faker::Address.street_address,
+  street2:      Faker::Address.secondary_address,
+  city:         Faker::Address.city,
+  state:        Faker::Address.state,
+  zip:          Faker::Address.zip_code,
+  country:      "USA"
+)
+end
+
+
+athletes.each do |item|
+  SchoolAddress.create!(
+  athlete:      item,
+  street:       Faker::Address.street_address,
+  street2:      Faker::Address.secondary_address,
+  city:         Faker::Address.city,
+  state:        Faker::Address.state,
+  zip:          Faker::Address.zip_code,
+  country:      "USA"
+)
+end
+
+athletes.each do |item|
+  Sibling.create!(
+  athlete:      item,
+  siblingNames: Faker::Name.first_name
 )
 end
 
@@ -74,6 +150,7 @@ end
     active:       Faker::Boolean.boolean(0.7)
   )
 end
+
 
 puts "Seed finished"
 puts "#{User.count} users created"
