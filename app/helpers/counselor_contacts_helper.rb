@@ -1,0 +1,2 @@
+module CounselorContactsHelper
+end

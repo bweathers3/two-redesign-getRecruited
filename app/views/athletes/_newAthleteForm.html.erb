@@ -174,6 +174,77 @@
       </div>
     </div>
 
+    <h2> Academic Information </h2>
+    <div class="row">
+       <div class="col-md-6">
+         <p>Guidelines for new address information</p>
+         <ul>
+           <li>Please enter both a first and last name.</li>
+           <li>Please make sure the year an athlete intends to start school is correct.</li>
+           <li>Make sure you check the box for active.</li>
+         </ul>
+       </div>
+       <div class="col-md-6">
+         <%= form.fields_for :academic do |academicForm| %>
+            <div class="form-group">
+              <%= academicForm.label "School Name" %>
+              <%= academicForm.text_field :schoolName, class: 'form-control', id: :academic_schoolName %>
+            </div>
+
+            <div class="form-group">
+              <%= academicForm.label "Phone" %>
+              <%= academicForm.text_field :phone, class: 'form-control', id: :academic_phone %>
+            </div>
+
+            <div class="form-group">
+              <%= academicForm.label "SAT Math" %>
+              <%= academicForm.text_field :satMath, class: 'form-control', id: :academic_satMath %>
+            </div>
+
+            <div class="form-group">
+              <%= academicForm.label "SAT English" %>
+              <%= academicForm.text_field :satEnglish, class: 'form-control', id: :academic_satEnglish %>
+            </div>
+
+            <div class="form-group">
+              <%= academicForm.label "SAT Total" %>
+              <%= academicForm.text_field :satTotal, class: 'form-control', id: :academic_satTotal %>
+            </div>
+
+            <div class="form-group">
+              <%= academicForm.label "ACT Total" %>
+              <%= academicForm.text_field :actTotal, class: 'form-control', id: :academic_actTotal %>
+            </div>
+
+            <div class="form-group">
+              <%= academicForm.label "GPA" %>
+              <%= academicForm.text_field :gpa, class: 'form-control', id: :academic_gpa %>
+            </div>
+
+            <div class="form-group">
+              <%= academicForm.label "GPA Scale" %>
+              <%= academicForm.text_field :gpaScale, class: 'form-control', id: :academic_gpaScale %>
+            </div>
+
+            <div class="form-group">
+              <%= academicForm.label "Class Rank" %>
+              <%= academicForm.text_field :classRank, class: 'form-control', id: :academic_classRank %>
+            </div>
+
+            <div class="form-group">
+              <%= academicForm.label "Class Size" %>
+              <%= academicForm.text_field :classSize, class: 'form-control', id: :academic_classSize %>
+            </div>
+
+            <div class="form-group">
+              <%= academicForm.label "Academic Notes" %>
+              <%= academicForm.text_field :notes, class: 'form-control', id: :academic_notes %>
+            </div>
+
+         <% end %>
+      </div>
+    </div>
+
     <h2> Parent 1 Contact Information </h2>
     <div class="row">
        <div class="col-md-6">
@@ -332,6 +403,42 @@
             <div class="form-group">
               <%= father_addressForm.label "Country" %>
               <%= father_addressForm.text_field :country, class: 'form-control', id: :father_address_country %>
+            </div>
+
+         <% end %>
+      </div>
+    </div>
+
+    <h2> Counselor Contact Information </h2>
+    <div class="row">
+       <div class="col-md-6">
+         <p>Guidelines for new Counselor contact information</p>
+         <ul>
+           <li>Please enter both a first and last name.</li>
+           <li>Please make sure the year an athlete intends to start school is correct.</li>
+           <li>Make sure you check the box for active.</li>
+         </ul>
+       </div>
+       <div class="col-md-6">
+         <%= form.fields_for :counselor_contact do |counselor_contactForm| %>
+            <div class="form-group">
+              <%= counselor_contactForm.label "First Name" %>
+              <%= counselor_contactForm.text_field :firstName, class: 'form-control', id: :counselor_contact_firstName %>
+            </div>
+
+            <div class="form-group">
+              <%= counselor_contactForm.label "Last Name" %>
+              <%= counselor_contactForm.text_field :lastName, class: 'form-control', id: :counselor_contact_lastName %>
+            </div>
+
+            <div class="form-group">
+              <%= counselor_contactForm.label "Email" %>
+              <%= counselor_contactForm.text_field :email, class: 'form-control', id: :counselor_contact_email %>
+            </div>
+
+            <div class="form-group">
+              <%= counselor_contactForm.label "Phone" %>
+              <%= counselor_contactForm.text_field :phone, class: 'form-control', id: :counselor_contact_phone %>
             </div>
 
          <% end %>

@@ -54,6 +54,23 @@ athletes.each do |item|
 end
 
 athletes.each do |item|
+  Academic.create!(
+  athlete:      item,
+  schoolName:   Faker::Name.name,
+  phone:        Faker::PhoneNumber.phone_number,
+  satMath:      Faker::Number.between(200, 800),
+  satEnglish:   Faker::Number.between(200, 800),
+  satTotal:     Faker::Number.between(400, 1600),
+  actTotal:     Faker::Number.between(2, 37),
+  gpa:          Faker::Number.between(0, 4),
+  gpaScale:     Faker::Number.between(0, 8),
+  classRank:    Faker::Number.between(1, 1200),
+  classSize:    Faker::Number.between(1, 1200),
+  notes:        Faker::Community.quotes
+)
+end
+
+athletes.each do |item|
   Address.create!(
   athlete:      item,
   street:       Faker::Address.street_address,
@@ -62,6 +79,16 @@ athletes.each do |item|
   state:        Faker::Address.state,
   zip:          Faker::Address.zip_code,
   country:      "Canada"
+)
+end
+
+athletes.each do |item|
+  CounselorContact.create!(
+  athlete:      item,
+  firstName:    Faker::Name.first_name,
+  lastName:     Faker::Name.unique.last_name,
+  email:        Faker::Internet.safe_email,
+  phone:        Faker::PhoneNumber.phone_number
 )
 end
 

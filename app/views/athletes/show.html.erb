@@ -40,6 +40,16 @@
 
 <div class="col-md-12">
   <h1> </h1>
+  <h4 class="record-division">Academic Information</h4>
+</div>
+
+<div class="col-md-12">
+  <h3> </h3>
+  <%= render @athlete.academic %>
+</div>
+
+<div class="col-md-12">
+  <h1> </h1>
   <h4 class="record-division">Parent 1's Contact Information</h4>
   <%= render @athlete.mother_contact %>
 </div>
@@ -60,11 +70,10 @@
   <%= render @athlete.father_address %>
 </div>
 
-
 <div class="col-md-12">
   <h1> </h1>
   <h4 class="record-division">School Contact Information</h4>
-
+  <%= render @athlete.counselor_contact %>
 </div>
 
 <div class="col-md-12">

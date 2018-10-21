@@ -11,8 +11,10 @@ class AthletesController < ApplicationController
   def new
     @athlete = Athlete.new
     @athlete.contact.build
+    @athlete.academic.build
     @athlete.address.build
     @athlete.current_address.build
+    @athlete.counselor_contact.build
     @athlete.father_address.build
     @athlete.father_contact.build
     @athlete.mother_address.build
@@ -25,8 +27,10 @@ class AthletesController < ApplicationController
   def edit
     @athlete = Athlete.find(params[:id])
     @athlete.contact.build if @athlete.contact.nil?
+    @athlete.academic.build if @athlete.academic.nil?
     @athlete.address.build if @athlete.address.nil?
     @athlete.current_address.build  if @athlete.current_address.nil?
+    @athlete.counselor_contact.build  if @athlete.counselor_contact.nil?
     @athlete.father_address.build  if @athlete.father_address.nil?
     @athlete.father_contact.build  if @athlete.father_contact.nil?
     @athlete.mother_address.build  if @athlete.mother_address.nil?
@@ -77,9 +81,11 @@ class AthletesController < ApplicationController
 
   def athlete_params
     params.require(:athlete).permit(:firstName, :middleName, :lastName, :preferredName, :yearStartingSchool, :active,
-      :contact_attributes=> [:phone, :email],
+      :academic_attributes=> [:schoolName, :phone, :satMath, :satEnglish, :satTotal, :actTotal, :gpa, :gpaScale, :classRank, :classSize, :notes],
       :address_attributes=> [:street, :street2, :city, :state, :zip, :country],
+      :contact_attributes=> [:phone, :email],
       :current_address_attributes=> [:street, :street2, :city, :state, :zip, :country],
+      :counselor_contact_attributes=> [:firstName, :middleName, :phone, :email],
       :father_address_attributes=> [:street, :street2, :city, :state, :zip, :country],
       :father_contact_attributes=> [:firstName, :middleName, :phone, :email],
       :mother_address_attributes=> [:street, :street2, :city, :state, :zip, :country],
