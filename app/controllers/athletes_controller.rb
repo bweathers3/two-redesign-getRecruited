@@ -10,34 +10,34 @@ class AthletesController < ApplicationController
 
   def new
     @athlete = Athlete.new
-    @athlete.contact.build
-    @athlete.academic.build
-    @athlete.address.build
-    @athlete.current_address.build
-    @athlete.counselor_contact.build
-    @athlete.father_address.build
-    @athlete.father_contact.build
-    @athlete.mother_address.build
-    @athlete.mother_contact.build
-    @athlete.school_address.build
-    @athlete.sibling.build
+    @contact = @athlete.build_contact #has-one association
+    @academic = @athlete.build_academic
+    @address = @athlete.build_address
+    @current_address = @athlete.build_current_address
+    @counselor_contact = @athlete.build_counselor_contact
+    @father_address = @athlete.build_father_address
+    @father_contact = @athlete.build_father_contact
+    @mother_address = @athlete.build_mother_address
+    @mother_contact = @athlete.build_mother_contact
+    @school_address = @athlete.build_school_address
+    @sibling = @athlete.build_sibling
   end
-
 
   def edit
     @athlete = Athlete.find(params[:id])
-    @athlete.contact.build if @athlete.contact.nil?
-    @athlete.academic.build if @athlete.academic.nil?
-    @athlete.address.build if @athlete.address.nil?
-    @athlete.current_address.build  if @athlete.current_address.nil?
-    @athlete.counselor_contact.build  if @athlete.counselor_contact.nil?
-    @athlete.father_address.build  if @athlete.father_address.nil?
-    @athlete.father_contact.build  if @athlete.father_contact.nil?
-    @athlete.mother_address.build  if @athlete.mother_address.nil?
-    @athlete.mother_contact.build  if @athlete.mother_contact.nil?
-    @athlete.school_address.build  if @athlete.school_address.nil?
-    @athlete.sibling.build  if @athlete.sibling.nil?
+    @contact = @athlete.build_contact if @athlete.contact.nil? #has-one association
+    @academic = @athlete.build_academic if @athlete.academic.nil?
+    @address = @athlete.build_address if @athlete.address.nil?
+    @current_address = @athlete.build_current_address if @athlete.current_address.nil?
+    @counselor_contact = @athlete.build_counselor_contact if @athlete.counselor_contact.nil?
+    @father_address = @athlete.build_father_address if @athlete.father_address.nil?
+    @father_contact = @athlete.build_father_contact if @athlete.father_contact.nil?
+    @mother_address = @athlete.build_mother_address if @athlete.mother_address.nil?
+    @mother_contact = @athlete.build_mother_contact if @athlete.mother_contact.nil?
+    @school_address = @athlete.build_school_address if @athlete.school_address.nil?
+    @sibling = @athlete.build_sibling if @athlete.sibling.nil?
   end
+
 
   def create
     @athlete = Athlete.new(athlete_params)
