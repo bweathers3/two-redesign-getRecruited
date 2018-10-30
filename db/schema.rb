@@ -1,7 +1,4 @@
-# This file is auto-generated from the current state of the database. Instead
-# of editing this file, please use the migrations feature of Active Record to
-# incrementally modify your database, and then regenerate this schema definition.
-#
+
 # Note that this schema.rb definition is the authoritative source for your
 # database schema. If you need to create the application database on another
 # system, you should be using db:schema:load, not running all the migrations
@@ -10,7 +7,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181021140134) do
+ActiveRecord::Schema.define(version: 20181030162714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -171,6 +168,66 @@ ActiveRecord::Schema.define(version: 20181021140134) do
     t.index ["athlete_id"], name: "index_sports_on_athlete_id"
   end
 
+  create_table "swimmings", force: :cascade do |t|
+    t.string "frSCY50"
+    t.string "frSCM50"
+    t.string "frLCM50"
+    t.string "frSCY100"
+    t.string "frSCM100"
+    t.string "frLCM100"
+    t.string "frSCY200"
+    t.string "frSCM200"
+    t.string "frLCM200"
+    t.string "frSCY500"
+    t.string "frSCM400"
+    t.string "frLCM400"
+    t.string "frSCY1000"
+    t.string "frSCM800"
+    t.string "frLCM800"
+    t.string "frSCY1650"
+    t.string "frSCM1500"
+    t.string "frLCM1500"
+    t.string "bkSCY50"
+    t.string "bkSCM50"
+    t.string "bkLCM50"
+    t.string "bkSCY100"
+    t.string "bkSCM100"
+    t.string "bkLCM100"
+    t.string "bkSCY200"
+    t.string "bkSCM200"
+    t.string "bkLCM200"
+    t.string "brSCY50"
+    t.string "brSCM50"
+    t.string "brLCM50"
+    t.string "brSCY100"
+    t.string "brSCM100"
+    t.string "brLCM100"
+    t.string "brSCY200"
+    t.string "brSCM200"
+    t.string "brLCM200"
+    t.string "flSCY50"
+    t.string "flSCM50"
+    t.string "flLCM50"
+    t.string "flSCY100"
+    t.string "flSCM100"
+    t.string "flLCM100"
+    t.string "flSCY200"
+    t.string "flSCM200"
+    t.string "flLCM200"
+    t.string "imSCY100"
+    t.string "imSCM100"
+    t.string "imSCY200"
+    t.string "imSCM200"
+    t.string "imLCM200"
+    t.string "imSCY400"
+    t.string "imSCM400"
+    t.string "imLCM400"
+    t.bigint "sport_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sport_id"], name: "index_swimmings_on_sport_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -202,4 +259,5 @@ ActiveRecord::Schema.define(version: 20181021140134) do
   add_foreign_key "school_addresses", "athletes"
   add_foreign_key "siblings", "athletes"
   add_foreign_key "sports", "athletes"
+  add_foreign_key "swimmings", "sports"
 end
