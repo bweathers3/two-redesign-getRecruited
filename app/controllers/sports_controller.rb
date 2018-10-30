@@ -8,11 +8,13 @@ class SportsController < ApplicationController
   def new
     @athlete = Athlete.find(params[:athlete_id])
     @sport = Sport.new
+    @swimming = @sport.build_swimming #has-one association
   end
 
   def create
     @athlete = Athlete.find(params[:athlete_id])
     @sport = @athlete.sports.build(sport_params)
+    @swimming = @sport.build_swimming if @sport.swimming.nil? #has-one association
 
     if @sport.save
       flash[:notice] = "A new sport was saved successfully."

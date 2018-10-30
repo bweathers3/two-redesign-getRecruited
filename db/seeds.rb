@@ -179,6 +179,24 @@ end
 end
 
 
+sports = Sport.all
+
+sports.each do |item|
+  if item.sportName == "Mens Swimming" || item.sportName == "Womens Swimming"
+    Swimming.create!(
+    sport:      item,
+    frSCY50:      "23.45",
+    frSCM50:      "24.45",
+    frLCM50:      "25.45",
+    frSCY100:     "53.45",
+    frSCM100:     "54.45",
+    frLCM100:     "55.45"
+    )
+  end
+end
+
+
+
 puts "Seed finished"
 puts "#{User.count} users created"
 puts "#{Athlete.count} athletes created"
