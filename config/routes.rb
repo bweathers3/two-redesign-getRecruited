@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     resources :sibling
   end
 
+  resources :sports do
+    resources :swimming
+  end
+
   get 'about' => 'welcome#about'
   get 'contact' => 'welcome#contact'
   get 'faq' => 'welcome#faq'
