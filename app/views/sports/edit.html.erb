@@ -1,12 +1,12 @@
-<h3>Edit Active for Sport</h3>
-
-
-    <div class="col-md-12">
-      <div class="media">
-        <div class="media-body">
-          <h4 class="media-heading">
-            <%= render partial: 'editSportForm', locals: { sport: @sport } %>
-          </h4>
-        </div>
+<div class="record-data col-md-12">
+  <h3><%= "#{ "Edit - " + ' ' + @sport.sportName + ' ' }"%></h3>
+</div>
+  <div class="col-md-12">
+    <div class="media">
+      <div class="media-body">
+        <h4 class="media-heading">
+          <%= render partial: 'editSportForm', locals: { sport: @sport } %>
+        </h4>
       </div>
     </div>
+  </div>

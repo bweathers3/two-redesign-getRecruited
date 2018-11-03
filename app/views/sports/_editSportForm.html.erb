@@ -1,16 +1,29 @@
 
 <%= form_for [@sport.athlete, @sport] do |formItem| %>
 
-  <div class="form-group">
+  <div class="form-group col-md-2">
     <%= formItem.label "Active" %>
     <%= formItem.check_box :active, class: 'form-control', id: :sport_active %>
   </div>
 
-  <div class="form-group">
+  <div class="col-md-10">
+    <h4>In order to prevent data loss we do not allow you to change one sport to another sport, if you wish to change the sports please just add another sport and make this one inactive</h4>
+  </div>
+
+  <div class="col-md-12">
+      <div class="media">
+         <div class="media-body">
+           <h3 class="col-md-12 record-division"><%= "#{ 'Best Times:' }"%></h3>
+           <h1> </h1>
+              <%= formItem.fields_for :swimming do |swimmingForm| %>
+                <%= render partial: 'swimmings/editSwimming', locals: { swimmingForm: swimmingForm } %>
+              <% end %>
+          </div>
+      </div>
+  </div>
+
+  <div class="form-group col-md-12">
     <%= formItem.submit "Save", class: 'btn btn-success'  %>
   </div>
 
-  <div class="col-md-9">
-    <h4>In order to prevent data loss we do not allow you to change one sport to another sport, if you wish to change the sports please just add another sport and make this one inactive"</h4>
-  </div>
 <% end %>
