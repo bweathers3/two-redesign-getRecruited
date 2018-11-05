@@ -1,4 +1,7 @@
-
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
+#
 # Note that this schema.rb definition is the authoritative source for your
 # database schema. If you need to create the application database on another
 # system, you should be using db:schema:load, not running all the migrations
@@ -7,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181030162714) do
+ActiveRecord::Schema.define(version: 20181104142515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -135,6 +138,25 @@ ActiveRecord::Schema.define(version: 20181030162714) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["athlete_id"], name: "index_mother_contacts_on_athlete_id"
+  end
+
+  create_table "programs", force: :cascade do |t|
+    t.string "sport"
+    t.string "coach"
+    t.string "email1address"
+    t.string "coachPhone"
+    t.string "division"
+    t.string "region"
+    t.string "athleticWebsite"
+    t.string "blank"
+    t.string "sir"
+    t.string "firstName"
+    t.string "lastName"
+    t.string "collegeName"
+    t.string "address"
+    t.string "stateAndZip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "school_addresses", force: :cascade do |t|

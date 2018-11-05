@@ -1,0 +1,26 @@
+
+
+<%= flash[:notice] %>
+<table>
+	<thead>
+		<th>School Name</th>
+		<th>Sport</th>
+		<th>Division</th>
+	</thead>
+	<tbody>
+		<% @programs.each do |program| %>
+			<tr>
+				<td><%= program.collegeName %></td>
+				<td><%= program.sport %></td>
+				<td><%= program.division %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+<div>
+	<h4> Import College and University data! </h4>
+		<%= form_tag import_programs_path, multipart: true do %>
+		<%= file_field_tag :file %>
+		<%= submit_tag "Import Program CSV file" %>
+		<% end %>
+</div>
