@@ -6,4 +6,5 @@ class Sport < ApplicationRecord
   accepts_nested_attributes_for :swimming
 
   validates :sportName, presence: true
+
 end

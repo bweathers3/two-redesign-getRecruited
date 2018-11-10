@@ -8,13 +8,19 @@ class SportsController < ApplicationController
   def new
     @athlete = Athlete.find(params[:athlete_id])
     @sport = Sport.new
-    @swimming = @sport.build_swimming #has-one association
+    # if @sport.sportName === "Men's Swimming" || @sport.sportName === "Women's Swimming"
+    #   p "%%%%%%%%%%%%%%%% from new"
+    #   p @sport.sportName
+    #   p "%%%%%%%%%%%%%%%%"
+    #   @swimming = @sport.build_swimming #has-one association
+    # end
+
   end
 
   def create
     @athlete = Athlete.find(params[:athlete_id])
     @sport = @athlete.sports.build(sport_params)
-    @swimming = @sport.build_swimming if @sport.swimming.nil? #has-one association
+    buildPerformanceData
 
     if @sport.save
       flash[:notice] = "A new sport was saved successfully."
@@ -70,5 +76,16 @@ class SportsController < ApplicationController
           :flSCM50, :flLCM50, :flSCY100, :flSCM100, :flLCM100, :flSCY200, :flSCM200, :flLCM200, :imSCY100, :imSCM100,
           :imSCY200, :imSCM200, :imLCM200, :imSCY400, :imSCM400, :imLCM400]
       )
+    end
+
+    def buildPerformanceData
+      if @sport.sportName === "Men's Swimming" || @sport.sportName === "Women's Swimming"
+        p "%%%%%%%%%%%%%%%% from create"
+        p @sport.sportName
+        p "%%%%%%%%%%%%%%%%"
+        @swimming = @sport.build_swimming if @sport.swimming.nil? #has-one association
+      else
+
+      end
     end
 end

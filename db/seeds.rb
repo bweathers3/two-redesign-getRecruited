@@ -173,7 +173,7 @@ end
 24.times do
   Sport.create!(
     athlete:      athletes.sample,
-    sportName:    ["Mens Swimming", "Womens Swimming", "Mens Diving", "Womens Diving", "Mens Water Polo", "Womens Water Polo" ].sample,
+    sportName:    ["Men's Swimming", "Women's Swimming", "Men's Diving", "Women's Diving", "Men's Water Polo", "Women's Water Polo" ].sample,
     active:       Faker::Boolean.boolean(0.7)
   )
 end
@@ -182,7 +182,7 @@ end
 sports = Sport.all
 
 sports.each do |item|
-  if item.sportName == "Mens Swimming" || item.sportName == "Womens Swimming"
+  if item.sportName == "Men's Swimming" || item.sportName == "Women's Swimming"
     Swimming.create!(
     sport:      item,
     frSCY50:      "23.45",

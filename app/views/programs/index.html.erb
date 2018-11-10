@@ -1,22 +1,95 @@
 
-
 <%= flash[:notice] %>
+<h3> Division 1 </h3>
 <table>
 	<thead>
-		<th>School Name</th>
-		<th>Sport</th>
-		<th>Division</th>
+		<th class="col-md-7">School Name</th>
+		<th class="col-md-3">Sport</th>
+		<th class="col-md-2">Head Coach</th>
 	</thead>
 	<tbody>
-		<% @programs.each do |program| %>
+		<% @d1programs.each do |program| %>
 			<tr>
-				<td><%= program.collegeName %></td>
-				<td><%= program.sport %></td>
-				<td><%= program.division %></td>
+				<td class="col-md-7"><%= program.collegeName %></td>
+				<td class="col-md-3"><%= program.sport %></td>
+				<td class="col-md-2"><%= program.coach %></td>
 			</tr>
 		<% end %>
 	</tbody>
 </table>
+
+<h3> Division 2 </h3>
+<table>
+	<thead>
+		<th class="col-md-7">School Name</th>
+		<th class="col-md-3">Sport</th>
+		<th class="col-md-2">Head Coach</th>
+	</thead>
+	<tbody>
+		<% @d2programs.each do |program| %>
+			<tr>
+				<td class="col-md-7"><%= program.collegeName %></td>
+				<td class="col-md-3"><%= program.sport %></td>
+				<td class="col-md-2"><%= program.coach %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<h3> Division 3 </h3>
+<table>
+	<thead>
+		<th class="col-md-7">School Name</th>
+		<th class="col-md-3">Sport</th>
+		<th class="col-md-2">Head Coach</th>
+	</thead>
+	<tbody>
+		<% @d3programs.each do |program| %>
+			<tr>
+				<td class="col-md-7"><%= program.collegeName %></td>
+				<td class="col-md-3"><%= program.sport %></td>
+				<td class="col-md-2"><%= program.coach %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<h3> NAIA </h3>
+<table>
+	<thead>
+		<th class="col-md-7">School Name</th>
+		<th class="col-md-3">Sport</th>
+		<th class="col-md-2">Head Coach</th>
+	</thead>
+	<tbody>
+		<% @naiaprograms.each do |program| %>
+			<tr>
+				<td class="col-md-7"><%= program.collegeName %></td>
+				<td class="col-md-3"><%= program.sport %></td>
+				<td class="col-md-2"><%= program.coach %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<h3> Junior College </h3>
+<table>
+	<thead>
+		<th class="col-md-7">School Name</th>
+		<th class="col-md-3">Sport</th>
+		<th class="col-md-2">Head Coach</th>
+	</thead>
+	<tbody>
+		<% @jcprograms.each do |program| %>
+			<tr>
+				<td class="col-md-7"><%= program.collegeName %></td>
+				<td class="col-md-3"><%= program.sport %></td>
+				<td class="col-md-2"><%= program.coach %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
 <div>
 	<h4> Import College and University data! </h4>
 		<%= form_tag import_programs_path, multipart: true do %>
