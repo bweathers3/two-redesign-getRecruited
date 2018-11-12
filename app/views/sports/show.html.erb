@@ -23,6 +23,9 @@
             <% elsif @sport.sportName === "Men's Swimming" || @sport.sportName === "Women's Swimming" %>
                 <h4 class="record-division">Swimming Information</h4>
                 <%= render @sport.swimming %>
+            <% elsif @sport.sportName === "Men's Water Polo" || @sport.sportName === "Women's Water Polo" %>
+                <h4 class="record-division">Water Polo Information</h4>
+                <%= render @sport.waterpolo %>
             <% else %>
 
             <% end %>

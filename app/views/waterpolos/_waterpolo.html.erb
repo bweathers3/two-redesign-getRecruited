@@ -1,0 +1,48 @@
+<div class="col-md-12">
+  <div class="media">
+     <div class="media-body">
+       <div class="row">
+         <h5 class="col-md-2 record-title"><%= "#{ 'Height:' }"%></h5> <h5 class="col-md-4 record-data"><%= "#{ @sport.waterpolo.height }" %></h5>
+         <h5 class="col-md-2 record-title"><%= "#{ 'Weight:' }"%></h5> <h5 class="col-md-4 record-data"><%= "#{ @sport.waterpolo.weight }" %></h5>
+       </div>
+       <div class="row">
+         <h5 class="col-md-2 record-title"><%= "#{ 'Jersey Number:' }"%></h5> <h5 class="col-md-10 record-data"><%= "#{ @sport.waterpolo.jersey }" %></h5>
+       </div>
+       <div class="row">
+         <h5 class="col-md-12 record-division"><%= "#{ ' ' }"%></h5>
+       </div>
+       <div class="row">
+         <h5 class="col-md-2 record-title"><%= "#{ 'Goalie:' }"%></h5> <h5 class="col-md-2 record-data"><%= "#{ @sport.waterpolo.goalie ? "Yes" : "No"  }" %></h5>
+         <h5 class="col-md-2 record-title"><%= "#{ 'Center:' }"%></h5> <h5 class="col-md-2 record-data"><%= "#{ @sport.waterpolo.center ? "Yes" : "No" }" %></h5>
+         <h5 class="col-md-2 record-title"><%= "#{ 'Defender:' }"%></h5> <h5 class="col-md-2 record-data"><%= "#{ @sport.waterpolo.defender ? "Yes" : "No" }" %></h5>
+       </div>
+       <div class="row">
+         <h5 class="col-md-2 record-title"><%= "#{ 'Attacker:' }"%></h5> <h5 class="col-md-2 record-data"><%= "#{ @sport.waterpolo.attacker ? "Yes" : "No" }" %></h5>
+         <h5 class="col-md-2 record-title"><%= "#{ 'Utility:' }"%></h5> <h5 class="col-md-6 record-data"><%= "#{ @sport.waterpolo.utility ? "Yes" : "No" }" %></h5>
+       </div>
+       <div class="row">
+         <h5 class="col-md-2 record-title"><%= "#{ 'Left Handed:' }"%></h5> <h5 class="col-md-2 record-data"><%= "#{ @sport.waterpolo.right ? "Yes" : "No" }" %></h5>
+         <h5 class="col-md-2 record-title"><%= "#{ 'Right Handed:' }"%></h5> <h5 class="col-md-6 record-data"><%= "#{ @sport.waterpolo.left ? "Yes" : "No" }" %></h5>
+       </div>
+       <div class="row">
+         <h5 class="col-md-12 record-division"><%= "#{ ' ' }"%></h5>
+         <h5 class="col-md-12 record-division"><%= "#{ 'Best Swimming Times:' }"%></h5>
+       </div>
+       <div class="row">
+         <h5 class="col-md-2 record-title"><%= "#{ '50 Yard Free:' }"%></h5> <h5 class="col-md-10 record-data"><%= "#{ @sport.waterpolo.frSCY50 }" %></h5>
+       </div>
+       <div class="row">
+         <h5 class="col-md-2 record-title"><%= "#{ '100 Yard Free:' }"%></h5> <h5 class="col-md-10 record-data"><%= "#{ @sport.waterpolo.frSCY100 }" %></h5>
+       </div>
+       <div class="row">
+        <h5 class="col-md-2 record-title"><%= "#{ '200 Yard Free:' }"%></h5> <h5 class="col-md-10 record-data"><%= "#{ @sport.waterpolo.frSCY200 }" %></h5>
+       </div>
+       <div class="row">
+         <h5 class="col-md-12 record-division"><%= "#{ ' ' }"%></h5>
+       </div>
+       <div class="row">
+          <h5 class="col-md-4 record-division"><%= "#{ 'National Team Experience:' }"%></h5> <h5 class="col-md-8 record-data"><%= "#{ @sport.waterpolo.nationalTeamExp }" %></h5>
+       </div>
+     </div>
+  </div>
+</div>

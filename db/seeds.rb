@@ -203,22 +203,23 @@ sports.each do |item|
       threeD1date:    "1/14/2018",
       tenD1score:   "67.99",
       tenD1name:    "Armstand Reverse 2 Somersaults in the Tuck Position (634C)",
-      tenD1date:    "1/15/2018"  
+      tenD1date:    "1/15/2018"
     )
 
   elsif item.sportName == "Men's Water Polo" || item.sportName == "Women's Water Polo"
     Waterpolo.create!(
-      sport:      item,
-      frSCY50:      "23.45",
-      frSCY100:     "53.45",
-      height:       "5'10",
-      weight:       "175",
-      jersey:       "14",
-      defender:     false,
-      attacker:     true,
-      utility:      false,
-      right:        true,
-      left:         false
+      sport:                item,
+      frSCY50:              "23.45",
+      frSCY100:             "53.45",
+      height:               "5'10",
+      weight:               "175",
+      jersey:               "14",
+      defender:             false,
+      attacker:             true,
+      utility:              false,
+      right:                true,
+      left:                 false,
+      nationalTeamExp:      Faker::Community.quotes
     )
 
   end
