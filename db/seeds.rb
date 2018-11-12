@@ -184,14 +184,43 @@ sports = Sport.all
 sports.each do |item|
   if item.sportName == "Men's Swimming" || item.sportName == "Women's Swimming"
     Swimming.create!(
-    sport:      item,
-    frSCY50:      "23.45",
-    frSCM50:      "24.45",
-    frLCM50:      "25.45",
-    frSCY100:     "53.45",
-    frSCM100:     "54.45",
-    frLCM100:     "55.45"
+      sport:      item,
+      frSCY50:      "23.45",
+      frSCM50:      "24.45",
+      frLCM50:      "25.45",
+      frSCY100:     "53.45",
+      frSCM100:     "54.45",
+      frLCM100:     "55.45"
     )
+  elsif item.sportName == "Men's Diving" || item.sportName == "Women's Diving"
+    Diving.create!(
+      sport:      item,
+      oneD1score:   "79.83",
+      oneD1name:    "Forward Dive in the Pike Position (100B)",
+      oneD1date:    "1/12/2018",
+      threeD1score:   "83.43",
+      threeD1name:    "Reverse 1.5 Somersaults in the Pike Position (303B)",
+      threeD1date:    "1/14/2018",
+      tenD1score:   "67.99",
+      tenD1name:    "Armstand Reverse 2 Somersaults in the Tuck Position (634C)",
+      tenD1date:    "1/15/2018"  
+    )
+
+  elsif item.sportName == "Men's Water Polo" || item.sportName == "Women's Water Polo"
+    Waterpolo.create!(
+      sport:      item,
+      frSCY50:      "23.45",
+      frSCY100:     "53.45",
+      height:       "5'10",
+      weight:       "175",
+      jersey:       "14",
+      defender:     false,
+      attacker:     true,
+      utility:      false,
+      right:        true,
+      left:         false
+    )
+
   end
 end
 

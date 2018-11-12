@@ -1,0 +1,2 @@
+class DivingsController < ApplicationController
+end

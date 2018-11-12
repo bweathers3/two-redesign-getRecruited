@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181104142515) do
+ActiveRecord::Schema.define(version: 20181111015316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,67 @@ ActiveRecord::Schema.define(version: 20181104142515) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["athlete_id"], name: "index_current_addresses_on_athlete_id"
+  end
+
+  create_table "divings", force: :cascade do |t|
+    t.string "oneD1score"
+    t.string "oneD1name"
+    t.string "oneD1date"
+    t.string "oneD2score"
+    t.string "oneD2name"
+    t.string "oneD2date"
+    t.string "oneD3score"
+    t.string "oneD3name"
+    t.string "oneD3date"
+    t.string "oneD4score"
+    t.string "oneD4name"
+    t.string "oneD4date"
+    t.string "oneD5score"
+    t.string "oneD5name"
+    t.string "oneD5date"
+    t.string "oneD6score"
+    t.string "oneD6name"
+    t.string "oneD6date"
+    t.string "threeD1score"
+    t.string "threeD1name"
+    t.string "threeD1date"
+    t.string "threeD2score"
+    t.string "threeD2name"
+    t.string "threeD2date"
+    t.string "threeD3score"
+    t.string "threeD3name"
+    t.string "threeD3date"
+    t.string "threeD4score"
+    t.string "threeD4name"
+    t.string "threeD4date"
+    t.string "threeD5score"
+    t.string "threeD5name"
+    t.string "threeD5date"
+    t.string "threeD6score"
+    t.string "threeD6name"
+    t.string "threeD6date"
+    t.string "tenD1score"
+    t.string "tenD1name"
+    t.string "tenD1date"
+    t.string "tenD2score"
+    t.string "tenD2name"
+    t.string "tenD2date"
+    t.string "tenD3score"
+    t.string "tenD3name"
+    t.string "tenD3date"
+    t.string "tenD4score"
+    t.string "tenD4name"
+    t.string "tenD4date"
+    t.string "tenD5score"
+    t.string "tenD5name"
+    t.string "tenD5date"
+    t.string "tenD6score"
+    t.string "tenD6name"
+    t.string "tenD6date"
+    t.bigint "sport_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sport_id"], name: "index_divings_on_sport_id"
   end
 
   create_table "father_addresses", force: :cascade do |t|
@@ -269,11 +330,33 @@ ActiveRecord::Schema.define(version: 20181104142515) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "waterpolos", force: :cascade do |t|
+    t.string "height"
+    t.string "weight"
+    t.string "jersey"
+    t.boolean "goalie", default: false
+    t.boolean "center", default: false
+    t.boolean "defender", default: false
+    t.boolean "attacker", default: false
+    t.boolean "utility", default: false
+    t.boolean "right", default: false
+    t.boolean "left", default: false
+    t.string "frSCY50"
+    t.string "frSCY100"
+    t.string "frSCY200"
+    t.text "nationalTeamExp"
+    t.bigint "sport_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sport_id"], name: "index_waterpolos_on_sport_id"
+  end
+
   add_foreign_key "academics", "athletes"
   add_foreign_key "addresses", "athletes"
   add_foreign_key "contacts", "athletes"
   add_foreign_key "counselor_contacts", "athletes"
   add_foreign_key "current_addresses", "athletes"
+  add_foreign_key "divings", "sports"
   add_foreign_key "father_addresses", "athletes"
   add_foreign_key "father_contacts", "athletes"
   add_foreign_key "mother_addresses", "athletes"
@@ -282,4 +365,5 @@ ActiveRecord::Schema.define(version: 20181104142515) do
   add_foreign_key "siblings", "athletes"
   add_foreign_key "sports", "athletes"
   add_foreign_key "swimmings", "sports"
+  add_foreign_key "waterpolos", "sports"
 end

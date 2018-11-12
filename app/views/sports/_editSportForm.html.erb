@@ -13,12 +13,25 @@
   <div class="col-md-12">
       <div class="media">
          <div class="media-body">
-           <h3 class="col-md-12 record-division"><%= "#{ 'Best Times:' }"%></h3>
-           <h1> </h1>
-              <%= formItem.fields_for :swimming do |swimmingForm| %>
-                <%= render partial: 'swimmings/editSwimming', locals: { swimmingForm: swimmingForm } %>
-              <% end %>
-          </div>
+
+           <% if  @sport.sportName === "Men's Diving" || @sport.sportName === "Women's Diving" %>
+             <h3 class="col-md-12 record-division"><%= "#{ 'Best Diving Scores:' }"%></h3>
+             <h1> </h1>
+                <%= formItem.fields_for :diving do |divingForm| %>
+                  <%= render partial: 'divings/editDiving', locals: { divingForm: divingForm } %>
+                <% end %>
+           <% elsif @sport.sportName === "Men's Swimming" || @sport.sportName === "Women's Swimming" %>
+             <h3 class="col-md-12 record-division"><%= "#{ 'Best Times:' }"%></h3>
+             <h1> </h1>
+                <%= formItem.fields_for :swimming do |swimmingForm| %>
+                  <%= render partial: 'swimmings/editSwimming', locals: { swimmingForm: swimmingForm } %>
+                <% end %>
+
+           <% else %>
+
+           <% end %>
+
+         </div>
       </div>
   </div>
 
