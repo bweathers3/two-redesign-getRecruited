@@ -1,0 +1,89 @@
+
+<div class="row">
+  <div class="form-group">
+    <h5 class="col-md-2 record-title right-side"><%= "#{ 'Height:' }" %></h5>
+    <h5 class="col-md-2 record-data"><%= waterpoloForm.text_field :height, class: 'form-control', id: :waterpolo_height %></h5>
+  </div>
+
+  <div class="form-group">
+    <h5 class="col-md-2 record-title right-side"><%= "#{  "Weight:"  }" %></h5>
+    <h5 class="col-md-2 record-data"><%= waterpoloForm.text_field :weight, class: 'form-control', id: :waterpolo_weight %></h5>
+  </div>
+
+  <div class="form-group">
+    <h5 class="col-md-2 record-title right-side"><%= "#{ "Jersey Number:"  }" %></h5>
+    <h5 class="col-md-2 record-data"><%= waterpoloForm.text_field :jersey, class: 'form-control', id: :waterpolo_jersey %></h5>
+  </div>
+
+  <div class="form-group row">
+    <h5 class="col-md-12 record-title"><%= " " %></h5>
+    <h5 class="col-md-1 record-title"><%= " " %></h5>
+    <h5 class="col-md-11 record-data"><%= "#{ "Best Swimming Times:"  }" %></h5>
+  </div>
+
+  <div class="form-group">
+   <h5 class="col-md-2 record-title right-side"><%= "#{ '50 Free SCY:' }" %></h5>
+   <h5 class="col-md-2 record-data"><%= waterpoloForm.text_field :frSCY50, class: 'form-control', id: :waterpolo_frSCY50 %></h5>
+  </div>
+
+  <div class="form-group">
+   <h5 class="col-md-2 record-title right-side"><%= "#{  "100 Free SCY:"  }" %></h5>
+   <h5 class="col-md-2 record-data"><%= waterpoloForm.text_field :frSCY100, class: 'form-control', id: :waterpolo_frSCY100 %></h5>
+  </div>
+
+  <div class="form-group">
+   <h5 class="col-md-2 record-title right-side"><%= "#{ "200 Free SCY:"  }" %></h5>
+   <h5 class="col-md-2 record-data"><%= waterpoloForm.text_field :frSCY200, class: 'form-control', id: :waterpolo_frSCY200 %></h5>
+  </div>
+
+  <div class="form-group row">
+    <h5 class="col-md-12 record-title"><%= " " %></h5>
+    <h5 class="col-md-1 record-title"><%= " " %></h5>
+    <h5 class="col-md-11 record-data"><%= "#{ "Positions (Check your positions):"  }" %></h5>
+  </div>
+
+  <div class="form-group">
+    <h5 class="col-md-2 record-title right-side"><%= "#{ "Goalie:"  }" %></h5>
+    <h5 class="col-md-2 record-data"><%= waterpoloForm.check_box :goalie, class: 'form-control', id: :waterpolo_goalie %></h5>
+  </div>
+
+  <div class="form-group">
+    <h5 class="col-md-2 record-title right-side"><%= "#{ "Center:"  }" %></h5>
+    <h5 class="col-md-2 record-data"><%= waterpoloForm.check_box :center, class: 'form-control', id: :waterpolo_center %></h5>
+  </div>
+
+  <div class="form-group">
+    <h5 class="col-md-2 record-title right-side"><%= "#{ "Defender:"  }" %></h5>
+    <h5 class="col-md-2 record-data"><%= waterpoloForm.check_box :defender, class: 'form-control', id: :waterpolo_defender %></h5>
+  </div>
+
+  <div class="form-group">
+    <h5 class="col-md-2 record-title right-side"><%= "#{ "Attacker:"  }" %></h5>
+    <h5 class="col-md-2 record-data"><%= waterpoloForm.check_box :attacker, class: 'form-control', id: :waterpolo_attacker %></h5>
+  </div>
+
+  <div class="form-group">
+    <h5 class="col-md-2 record-title right-side"><%= "#{ "Utility:"  }" %></h5>
+    <h5 class="col-md-6 record-data"><%= waterpoloForm.check_box :utility, class: 'form-control', id: :waterpolo_utility %></h5>
+  </div>
+
+  <div class="row">
+    <div class="form-group">
+      <h5 class="col-md-12 record-title"><%= " " %></h5>
+      <h5 class="col-md-1 record-title"><%= " " %></h5>
+      <h5 class="col-md-11 record-data"><%= "#{ "Perfered Hand (Check your dominate hand):"  }" %></h5>
+    </div>
+
+    <div class="form-group">
+      <h5 class="col-md-2 record-title right-side"><%= "#{ "Left:"  }" %></h5>
+      <h5 class="col-md-2 record-data"><%= waterpoloForm.check_box :left, class: 'form-control', id: :waterpolo_left %></h5>
+    </div>
+
+    <div class="form-group">
+      <h5 class="col-md-2 record-title right-side"><%= "#{ "Right:"  }" %></h5>
+      <h5 class="col-md-6 record-data"><%= waterpoloForm.check_box :right, class: 'form-control', id: :waterpolo_right %></h5>
+    </div>
+  </div>
+
+
+</div>
