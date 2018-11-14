@@ -21,6 +21,7 @@ class SportsController < ApplicationController
     @athlete = Athlete.find(params[:athlete_id])
     @sport = @athlete.sports.build(sport_params)
     buildPerformanceData
+    buildProgramAndSportJoin
 
     if @sport.save
       flash[:notice] = "A new sport was saved successfully."
@@ -96,11 +97,13 @@ class SportsController < ApplicationController
         p "%%%%%%%%%%%%%%%%"
         @swimming = @sport.build_swimming if @sport.swimming.nil? #has-one association
 
+
       elsif @sport.sportName === "Men's Diving" || @sport.sportName === "Women's Diving"
         p "%%%%%%%%%%%%%%%% from create"
         p @sport.sportName
         p "%%%%%%%%%%%%%%%%"
         @diving = @sport.build_diving if @sport.diving.nil? #has-one association
+
 
       elsif @sport.sportName === "Men's Water Polo" || @sport.sportName === "Women's Water Polo"
         p "%%%%%%%%%%%%%%%% from create"
@@ -113,6 +116,10 @@ class SportsController < ApplicationController
       end
     end
 
-
+    def buildProgramAndSportJoin
+      @programs = Program.where(sport: @sport.sportName).order(collegeName: :asc).all
+      @sport.programs << @programs
+      p @sport.programs
+    end
 
 end
