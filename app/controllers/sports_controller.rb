@@ -3,18 +3,15 @@ class SportsController < ApplicationController
   def show
     @athlete = Athlete.find(params[:athlete_id])
     @sport = Sport.find(params[:id])
+    @myTeams = @sport.programs.where(sport: @sport.sportName)
+    puts "****************"
+    p @myTeams
+    puts "****************"
   end
 
   def new
     @athlete = Athlete.find(params[:athlete_id])
     @sport = Sport.new
-    # if @sport.sportName === "Men's Swimming" || @sport.sportName === "Women's Swimming"
-    #   p "%%%%%%%%%%%%%%%% from new"
-    #   p @sport.sportName
-    #   p "%%%%%%%%%%%%%%%%"
-    #   @swimming = @sport.build_swimming #has-one association
-    # end
-
   end
 
   def create
@@ -92,25 +89,11 @@ class SportsController < ApplicationController
 
     def buildPerformanceData
       if @sport.sportName === "Men's Swimming" || @sport.sportName === "Women's Swimming"
-        p "%%%%%%%%%%%%%%%% from create"
-        p @sport.sportName
-        p "%%%%%%%%%%%%%%%%"
         @swimming = @sport.build_swimming if @sport.swimming.nil? #has-one association
-
-
       elsif @sport.sportName === "Men's Diving" || @sport.sportName === "Women's Diving"
-        p "%%%%%%%%%%%%%%%% from create"
-        p @sport.sportName
-        p "%%%%%%%%%%%%%%%%"
         @diving = @sport.build_diving if @sport.diving.nil? #has-one association
-
-
       elsif @sport.sportName === "Men's Water Polo" || @sport.sportName === "Women's Water Polo"
-        p "%%%%%%%%%%%%%%%% from create"
-        p @sport.sportName
-        p "%%%%%%%%%%%%%%%%"
         @diving = @sport.build_diving if @sport.diving.nil? #has-one association
-
       else
 
       end
@@ -119,7 +102,6 @@ class SportsController < ApplicationController
     def buildProgramAndSportJoin
       @programs = Program.where(sport: @sport.sportName).order(collegeName: :asc).all
       @sport.programs << @programs
-      p @sport.programs
     end
 
 end
