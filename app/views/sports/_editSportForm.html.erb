@@ -15,7 +15,7 @@
          <div class="media-body">
 
            <% if  @sport.sportName === "Men's Diving" || @sport.sportName === "Women's Diving" %>
-             <h3 class="col-md-12 record-division"><%= "#{ 'Best Diving Scores:' }"%></h3>
+             <h3 class="col-md-12 record-division"><%= "#{ 'Best Optional Diving Scores:' }"%></h3>
              <h1> </h1>
                 <%= formItem.fields_for :diving do |divingForm| %>
                   <%= render partial: 'divings/editDiving', locals: { divingForm: divingForm } %>

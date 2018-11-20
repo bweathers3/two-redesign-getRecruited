@@ -5,7 +5,10 @@ class Sport < ApplicationRecord
   has_one :swimming, dependent: :destroy, foreign_key: :sport_id
   has_one :waterpolo, dependent: :destroy, foreign_key: :sport_id
 
-  has_and_belongs_to_many :programs
+  has_many :myprograms
+  has_many :programs, through: :myprograms
+  accepts_nested_attributes_for :myprograms
+  accepts_nested_attributes_for :programs
 
   accepts_nested_attributes_for :diving
   accepts_nested_attributes_for :swimming

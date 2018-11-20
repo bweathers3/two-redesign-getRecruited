@@ -5,21 +5,24 @@ Rails.application.routes.draw do
   end
 
   resources :athletes do
-    resources :academic
-    resources :address
-    resources :contact
-    resources :counselor_contact
-    resources :current_address
-    resources :father_address
-    resources :father_contact
-    resources :mother_address
-    resources :mother_contact
-    resources :school_address
-    resources :sibling
+    #resources :academic
+    # resources :address
+    # resources :contact
+    # resources :counselor_contact
+    # resources :current_address
+    # resources :father_address
+    # resources :father_contact
+    # resources :mother_address
+    # resources :mother_contact
+    # resources :school_address
+    # resources :sibling
   end
 
   resources :sports do
+    resources :diving
+    resources :myprogram
     resources :swimming
+    resources :waterpolo
   end
 
   get 'programs/index'
@@ -27,6 +30,10 @@ Rails.application.routes.draw do
 
   resources :programs do
   	collection { post :import}
+  end
+
+  resources :programs do
+    resources :myprogram
   end
 
   get 'about' => 'welcome#about'

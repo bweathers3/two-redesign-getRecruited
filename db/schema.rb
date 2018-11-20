@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181111015316) do
+ActiveRecord::Schema.define(version: 20181120145459) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -153,6 +153,13 @@ ActiveRecord::Schema.define(version: 20181111015316) do
     t.index ["sport_id"], name: "index_divings_on_sport_id"
   end
 
+  create_table "divisions", force: :cascade do |t|
+    t.string "title"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "father_addresses", force: :cascade do |t|
     t.string "street"
     t.string "street2"
@@ -199,6 +206,16 @@ ActiveRecord::Schema.define(version: 20181111015316) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["athlete_id"], name: "index_mother_contacts_on_athlete_id"
+  end
+
+  create_table "myprograms", force: :cascade do |t|
+    t.boolean "public", default: false
+    t.bigint "sport_id"
+    t.bigint "program_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["program_id"], name: "index_myprograms_on_program_id"
+    t.index ["sport_id"], name: "index_myprograms_on_sport_id"
   end
 
   create_table "programs", force: :cascade do |t|
@@ -361,6 +378,8 @@ ActiveRecord::Schema.define(version: 20181111015316) do
   add_foreign_key "father_contacts", "athletes"
   add_foreign_key "mother_addresses", "athletes"
   add_foreign_key "mother_contacts", "athletes"
+  add_foreign_key "myprograms", "programs"
+  add_foreign_key "myprograms", "sports"
   add_foreign_key "school_addresses", "athletes"
   add_foreign_key "siblings", "athletes"
   add_foreign_key "sports", "athletes"

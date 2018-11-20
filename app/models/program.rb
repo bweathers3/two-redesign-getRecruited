@@ -3,7 +3,10 @@ class Program < ApplicationRecord
 
   validates :sport, :collegeName, presence: true
 
-  has_and_belongs_to_many :sports
+  has_many :myprograms
+  has_many :sports, through: :myprograms
+  accepts_nested_attributes_for :myprograms
+  accepts_nested_attributes_for :sports
 
   def self.import(file)
     CSV.foreach(file.path, { encoding: "UTF-8", headers: true, header_converters: :symbol, converters: :all}) do |row|

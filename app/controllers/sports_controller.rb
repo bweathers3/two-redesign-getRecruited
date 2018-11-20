@@ -3,10 +3,7 @@ class SportsController < ApplicationController
   def show
     @athlete = Athlete.find(params[:athlete_id])
     @sport = Sport.find(params[:id])
-    @myTeams = @sport.programs.where(sport: @sport.sportName)
-    puts "****************"
-    p @myTeams
-    puts "****************"
+    @divisionNames = Division.all
   end
 
   def new
@@ -18,7 +15,7 @@ class SportsController < ApplicationController
     @athlete = Athlete.find(params[:athlete_id])
     @sport = @athlete.sports.build(sport_params)
     buildPerformanceData
-    buildProgramAndSportJoin
+    buildMyPrograms
 
     if @sport.save
       flash[:notice] = "A new sport was saved successfully."
@@ -74,6 +71,8 @@ class SportsController < ApplicationController
           :tenD1name, :tenD1date, :tenD2score, :tenD2name, :tenD2date, :tenD3score, :tenD3name, :tenD3date, :tenD4score, :tenD4name,
           :tenD4date, :tenD5score, :tenD5name, :tenD5date, :tenD6score, :tenD6name, :tenD6date],
 
+        :myprogram_attributes=> [:public],
+
         :swimming_attributes=> [:frSCY50, :frSCM50, :frLCM50, :frSCY100, :frSCM100, :frLCM100, :frSCY200, :frSCM200,
           :frLCM200, :frSCY500, :frSCM400, :frLCM400, :frSCY1000, :frSCM800, :frLCM800, :frSCY1650, :frSCM1500,
           :frLCM1500, :bkSCY50, :bkSCM50, :bkLCM50, :bkSCY100, :bkSCM100, :bkLCM100, :bkSCY200, :bkSCM200, :bkLCM200,
@@ -93,14 +92,14 @@ class SportsController < ApplicationController
       elsif @sport.sportName === "Men's Diving" || @sport.sportName === "Women's Diving"
         @diving = @sport.build_diving if @sport.diving.nil? #has-one association
       elsif @sport.sportName === "Men's Water Polo" || @sport.sportName === "Women's Water Polo"
-        @diving = @sport.build_diving if @sport.diving.nil? #has-one association
+        @waterpolo = @sport.build_waterpolo if @sport.waterpolo.nil? #has-one association
       else
 
       end
     end
 
-    def buildProgramAndSportJoin
-      @programs = Program.where(sport: @sport.sportName).order(collegeName: :asc).all
+    def buildMyPrograms
+      @programs = Program.where(sport: @sport.sportName).order(collegeName: :desc).all
       @sport.programs << @programs
     end
 

@@ -15,4 +15,15 @@ class ProgramsController < ApplicationController
     Program.import(params[:file])
     redirect_to root_url, notice: "Program Data Imported!"
   end
+
+  private
+
+  def program_params
+    params.require(:program).permit(:sport, :coach, :email1address, :coachPhone, :division,
+      :region, :athleticWebsite, :blank, :sir, :firstName, :lastName, :collegeName,
+      :address, :stateAndZip,
+
+      :myprogram_attributes=> [:public]
+      )
+  end
 end
