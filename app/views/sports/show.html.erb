@@ -8,7 +8,7 @@
         <div class="col-md-5">
           <h3>
             <%= link_to "Edit Sport", edit_athlete_sport_path(@sport), class: 'btn btn-success' %>
-            <%= link_to "My Schools", edit_athlete_sport_path(@sport), class: 'btn btn-success' %>
+            <%= link_to "My Schools", sport_myteams_path(@sport), class: 'btn btn-success' %>
             <% if !@sport.startSportData?  %>
               <%= link_to "Delete Sport", [@sport.athlete, @sport], method: :delete,
                 class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this sport?'} %>
@@ -30,24 +30,6 @@
             <% else %>
 
             <% end %>
-        </div>
-     </div>
-
-     <div class="col-md-12">
-        <h1> </h1>
-        <h3 class="record-division">School Choices</h3>
-        <div class="media">
-            <div class="media-body">
-                <% @divisionNames.each do |division| %>
-                   <div class="col-md-12 record-data"><h4 class="record-division"> <%= "#{ division.title  }" %> </h4>
-                     <% @sport.myprograms.each do |item| %>
-                       <% if item.program.division === division.name %>
-                          <%= "#{ item.program.collegeName + " - " }" %><span class="sport-names"><%= item.public ? "Open to View" : "Closed" %></span><br>
-                       <% end %>
-                     <% end %>
-                   </div>
-                <% end %>
-            </div>
         </div>
      </div>
    </div>

@@ -1,12 +1,16 @@
 class Sport < ApplicationRecord
-  belongs_to :athlete
+  belongs_to :athlete, optional: true
 
   has_one :diving, dependent: :destroy, foreign_key: :sport_id
   has_one :swimming, dependent: :destroy, foreign_key: :sport_id
   has_one :waterpolo, dependent: :destroy, foreign_key: :sport_id
 
+  has_many :myteams, dependent: :destroy, foreign_key: :sport_id
+
   has_many :myprograms
   has_many :programs, through: :myprograms
+
+  accepts_nested_attributes_for :myteams
   accepts_nested_attributes_for :myprograms
   accepts_nested_attributes_for :programs
 

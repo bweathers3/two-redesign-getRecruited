@@ -15,7 +15,6 @@ class SportsController < ApplicationController
     @athlete = Athlete.find(params[:athlete_id])
     @sport = @athlete.sports.build(sport_params)
     buildPerformanceData
-    buildMyPrograms
 
     if @sport.save
       flash[:notice] = "A new sport was saved successfully."
@@ -28,12 +27,19 @@ class SportsController < ApplicationController
 
   def edit
     @sport = Sport.find(params[:id])
+    @divisionNames = Division.all
+  end
+
+  def editschool
+    @sport = Sport.find(params[:id])
+    @divisionNames = Division.all
   end
 
   def update
     @athlete = Athlete.find(params[:athlete_id])
     @sport = Sport.find(params[:id])
     @sport.assign_attributes(sport_params)
+    p @sport
 
     if @sport.save
       flash[:notice] = "A new sport was saved successfully."
@@ -63,7 +69,7 @@ class SportsController < ApplicationController
   private
 
     def sport_params
-      params.require(:sport).permit(:sportName, :active,
+      params.require(:sport).permit(:id, :sportName, :active,
         :diving_attributes=> [:oneD1score, :oneD1name, :oneD1date, :oneD2score, :oneD2name, :oneD2date, :oneD3score, :oneD3name,
           :oneD3date, :oneD4score, :oneD4name, :oneD4date, :oneD5score, :oneD5name, :oneD5date, :oneD6score, :oneD6name,
           :oneD6date, :threeD1score, :threeD1name, :threeD1date, :threeD2score, :threeD2name, :threeD2date, :threeD3score, :threeD3name, :threeD3date,
@@ -71,7 +77,13 @@ class SportsController < ApplicationController
           :tenD1name, :tenD1date, :tenD2score, :tenD2name, :tenD2date, :tenD3score, :tenD3name, :tenD3date, :tenD4score, :tenD4name,
           :tenD4date, :tenD5score, :tenD5name, :tenD5date, :tenD6score, :tenD6name, :tenD6date],
 
-        :myprogram_attributes=> [:public],
+        :myteam_attributes=> [:sport, :coach, :division, :collegeName, :public, :sport_id, :athlete_id],
+
+        #:myprogram_attributes=> [:id, :public, :sport_id, :program_id, :_destroy ],
+        #:myprogram_attributes=> [:id, {public: []}, {sport_id: []}, {program_id: []}, :_destroy ],
+        :program_attributes=> [:id, :sport, :coach, :email1address, :coachPhone, :division,
+          :region, :athleticWebsite, :blank, :sir, :firstName, :lastName, :collegeName,
+          :address, :stateAndZip],
 
         :swimming_attributes=> [:frSCY50, :frSCM50, :frLCM50, :frSCY100, :frSCM100, :frLCM100, :frSCY200, :frSCM200,
           :frLCM200, :frSCY500, :frSCM400, :frLCM400, :frSCY1000, :frSCM800, :frLCM800, :frSCY1650, :frSCM1500,
@@ -82,7 +94,6 @@ class SportsController < ApplicationController
 
         :waterpolo_attributes=> [:frSCY50, :frSCY100, :frSCY200, :height, :weight, :jersey, :goalie, :center,
           :defender, :attacker, :utility, :right, :left, :nationalTeamExp]
-
       )
     end
 
@@ -96,11 +107,6 @@ class SportsController < ApplicationController
       else
 
       end
-    end
-
-    def buildMyPrograms
-      @programs = Program.where(sport: @sport.sportName).order(collegeName: :desc).all
-      @sport.programs << @programs
     end
 
 end

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
 
   resources :athletes do
+    resources :myteams
     #resources :academic
     # resources :address
     # resources :contact
@@ -20,13 +21,17 @@ Rails.application.routes.draw do
 
   resources :sports do
     resources :diving
+
+    resources :myteams
     resources :myprogram
+
     resources :swimming
     resources :waterpolo
   end
 
   get 'programs/index'
   get 'programs/import'
+  get 'myteams/setUpTeams'
 
   resources :programs do
   	collection { post :import}

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181120145459) do
+ActiveRecord::Schema.define(version: 20181124135446) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -218,6 +218,20 @@ ActiveRecord::Schema.define(version: 20181120145459) do
     t.index ["sport_id"], name: "index_myprograms_on_sport_id"
   end
 
+  create_table "myteams", force: :cascade do |t|
+    t.string "sport"
+    t.string "coach"
+    t.string "division"
+    t.string "collegeName"
+    t.boolean "public", default: false
+    t.bigint "sport_id"
+    t.bigint "athlete_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["athlete_id"], name: "index_myteams_on_athlete_id"
+    t.index ["sport_id"], name: "index_myteams_on_sport_id"
+  end
+
   create_table "programs", force: :cascade do |t|
     t.string "sport"
     t.string "coach"
@@ -380,6 +394,8 @@ ActiveRecord::Schema.define(version: 20181120145459) do
   add_foreign_key "mother_contacts", "athletes"
   add_foreign_key "myprograms", "programs"
   add_foreign_key "myprograms", "sports"
+  add_foreign_key "myteams", "athletes"
+  add_foreign_key "myteams", "sports"
   add_foreign_key "school_addresses", "athletes"
   add_foreign_key "siblings", "athletes"
   add_foreign_key "sports", "athletes"

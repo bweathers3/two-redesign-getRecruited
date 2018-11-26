@@ -23,7 +23,8 @@ class ProgramsController < ApplicationController
       :region, :athleticWebsite, :blank, :sir, :firstName, :lastName, :collegeName,
       :address, :stateAndZip,
 
-      :myprogram_attributes=> [:public]
+      #:myprogram_attributes=> [:id, :public, :sport_id, :program_id, :_destroy ],
+      :sport_attributes=> [:id, :sportName, :active]
       )
   end
 end

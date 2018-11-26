@@ -1,6 +1,8 @@
 class Athlete < ApplicationRecord
   belongs_to :user
+
   has_many :sports, dependent: :destroy
+  has_many :myteams, dependent: :destroy, foreign_key: :athlete_id
 
   has_one :academic, foreign_key: :athlete_id
   has_one :address, foreign_key: :athlete_id
@@ -13,6 +15,8 @@ class Athlete < ApplicationRecord
   has_one :mother_contact, foreign_key: :athlete_id
   has_one :school_address, foreign_key: :athlete_id
   has_one :sibling, foreign_key: :athlete_id
+
+  accepts_nested_attributes_for :myteams
 
   accepts_nested_attributes_for :academic
   accepts_nested_attributes_for :address
