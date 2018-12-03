@@ -1,0 +1,45 @@
+<div class="record-data col-md-12">
+  test
+</div>
+  <div class="col-md-12">
+    <div class="media">
+      <div class="media-body">
+        <h4 class="media-heading">
+
+        </h4>
+      </div>
+    </div>
+  </div>
+
+<%= form_with url: edit_schools_sport_myteams_path do |form| %>
+
+
+  <div class="col-md-12">
+    <br/><br/><br/><br/>
+       <h1> </h1>
+       <h3 class="record-division">School Choices</h3>
+       <div class="media">
+          <div class="media-body">
+            <div class="col-md-12 record-data"><h4 class="record-division"> <%= "#{ "Junior College"  }" %> </h4>
+
+                 <% @myteams.each do |item| %>
+
+                    <div class="form-group">
+                      <h5 class="record-data"><%= form.check_box :public, class: 'form-control', id: :myteams_ids %>
+                      <%= "#{ "   " + item.collegeName }" %></h5>
+                    </div>
+
+                <% end %>
+
+
+            </div>
+          </div>
+       </div>
+    </div>
+  <% end %>
+
+  <div class="form-group col-md-12">
+    <br/><br/><br/>
+    <h5 class="col-md-12 record-title"><%= " " %></h5>
+    <%= formItem.submit "Save", class: 'btn btn-success'  %>
+  </div>

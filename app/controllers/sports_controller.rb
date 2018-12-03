@@ -27,19 +27,20 @@ class SportsController < ApplicationController
 
   def edit
     @sport = Sport.find(params[:id])
+    @jcMyteams = Myteam.where(sport_id: @sport.id, athlete_id: @sport.athlete_id, division: "Junior College").order(division: :asc, collegeName: :asc).all
     @divisionNames = Division.all
-  end
-
-  def editschool
-    @sport = Sport.find(params[:id])
-    @divisionNames = Division.all
+    p @jcMyteams
   end
 
   def update
+    p @jcMyteams
     @athlete = Athlete.find(params[:athlete_id])
     @sport = Sport.find(params[:id])
+    p @sport.myteams
+
+
     @sport.assign_attributes(sport_params)
-    p @sport
+    #p @sport
 
     if @sport.save
       flash[:notice] = "A new sport was saved successfully."
@@ -65,6 +66,55 @@ class SportsController < ApplicationController
     end
   end
 
+  def index_schools
+    @sport = Sport.find(params[:id])
+    @athlete = Athlete.find(@sport.athlete_id)
+    @divisionNames = Division.all
+    @myteams = Myteam.where(sport_id: @sport.id, athlete_id: @sport.athlete_id ).order(division: :asc, collegeName: :asc).all
+    if @myteams.count < 1
+      @Testingcount = "Testing count within controller to build local"
+      buildMyTeams
+    else
+      @Testingcount = "no new teams"
+    end
+  end
+
+  def edit_schools
+    @sport = Sport.find(params[:id])
+    @myteams = Myteam.where(sport_id: @sport.id, athlete_id: @sport.athlete_id, division: "Junior College").order(division: :asc, collegeName: :asc).all
+    @divisionNames = Division.all
+  p @myteams
+  end
+
+  def update_schools
+    @sport = Sport.find(params[:id])
+    p @sport
+    @sport.assign_attributes(sport_params)
+    p @sport
+
+    if @sport.save
+      flash[:notice] = "Updated Schools successfully."
+      redirect_to [@athlete]
+    else
+      flash.now[:alert] = "There was an error saving the new sport. Please try again."
+      render :new
+    end
+
+
+
+
+
+
+
+    # @myteams = Myteam.find(params[:sport_id])
+    # @sport.myteams.each do |myTeamsItem|
+    #   p myTeamsItem
+    #   #@myteam.assign_attributes!(params[:myTeamsItem])
+    # end
+    #p @myteam
+    # flash[:notice] = "Updated Schools successfully."
+    # redirect_to [@athlete]
+  end
 
   private
 
@@ -77,7 +127,7 @@ class SportsController < ApplicationController
           :tenD1name, :tenD1date, :tenD2score, :tenD2name, :tenD2date, :tenD3score, :tenD3name, :tenD3date, :tenD4score, :tenD4name,
           :tenD4date, :tenD5score, :tenD5name, :tenD5date, :tenD6score, :tenD6name, :tenD6date],
 
-        :myteam_attributes=> [:sport, :coach, :division, :collegeName, :public, :sport_id, :athlete_id],
+        :myteam_attributes=> [:id, :sport, :coach, :division, :collegeName, :public, :sport_id, :athlete_id],
 
         #:myprogram_attributes=> [:id, :public, :sport_id, :program_id, :_destroy ],
         #:myprogram_attributes=> [:id, {public: []}, {sport_id: []}, {program_id: []}, :_destroy ],
@@ -105,7 +155,6 @@ class SportsController < ApplicationController
       elsif @sport.sportName === "Men's Water Polo" || @sport.sportName === "Women's Water Polo"
         @waterpolo = @sport.build_waterpolo if @sport.waterpolo.nil? #has-one association
       else
-
       end
     end
 

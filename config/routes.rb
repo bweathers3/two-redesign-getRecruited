@@ -20,26 +20,39 @@ Rails.application.routes.draw do
   end
 
   resources :sports do
-    resources :diving
+    resources :diving, :swimming, :waterpolo
 
-    resources :myteams
-    resources :myprogram
+    member { get :index_schools }
+    member { get :edit_schools }
+    member { put :update_schools }
 
-    resources :swimming
-    resources :waterpolo
+    # resources :myteams do
+    #   collection { get :edit_schools }
+    # end
+
+    # resources :myteams do
+    #   collection { patch :update_schools }
+    # end
+    #resources :myprogram
   end
+
+  # resources :myteams do
+  #   collection { patch :update_schools }
+  # end
 
   get 'programs/index'
   get 'programs/import'
-  get 'myteams/setUpTeams'
+  #get 'myteams/setUpTeams'
 
   resources :programs do
   	collection { post :import}
   end
 
-  resources :programs do
-    resources :myprogram
-  end
+  # resources :programs do
+  #   resources :myprogram
+  # end
+
+
 
   get 'about' => 'welcome#about'
   get 'contact' => 'welcome#contact'
