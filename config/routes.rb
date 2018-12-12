@@ -22,9 +22,18 @@ Rails.application.routes.draw do
   resources :sports do
     resources :diving, :swimming, :waterpolo
 
-    member { get :index_schools }
-    member { get :edit_schools }
-    member { put :update_schools }
+    get 'index_schools', on: :member
+    get 'edit_schools', on: :member
+    patch 'update_schools', on: :collection
+
+    get 'index_myprograms', on: :member
+    get 'edit_myprograms', on: :member
+    patch 'update_myprograms', on: :collection
+
+
+    # member { get :index_schools }
+    # collection { get :edit_schools }
+    # collection { patch :update_schools }
 
     # resources :myteams do
     #   collection { get :edit_schools }
@@ -36,18 +45,24 @@ Rails.application.routes.draw do
     #resources :myprogram
   end
 
+  #resources :myteams
+
   # resources :myteams do
+  #   member { get :edit_schools }
   #   collection { patch :update_schools }
   # end
 
   get 'programs/index'
   get 'programs/import'
-  #get 'myteams/setUpTeams'
+
 
   resources :programs do
   	collection { post :import}
   end
 
+  resources :myprograms do
+    patch 'update_myprograms', on: :collection
+  end
   # resources :programs do
   #   resources :myprogram
   # end

@@ -1,0 +1,42 @@
+<div class="media">
+  <div class="media-body">
+    <div class="row">
+
+      <div class="col-md-9">
+        <h3><span class="record-data"><%= "#{ @athlete.firstName + ' ' + @athlete.middleName + ' ' + @athlete.lastName }" %></span> -
+        <span class="sport-names"><%= @sport.sportName %></span> - <span class="record-data"><%= @sport.active ? "Active" : "Inactive" %></span></h3>
+      </div>
+      <div class="col-md-3">
+        <h3>
+        <%= link_to "Edit My Programs", edit_myprograms_sport_path(@sport), class: 'btn btn-primary' %>
+        </h3>
+      </div>
+
+      <div class="col-md-12">
+        <h1> </h1>
+        <h3 class="record-division">School Choices</h3>
+        <div class="media">
+          <div class="media-body">
+            <% @divisionNames.each do |division| %>
+              <div class="col-md-12 record-division"><h4> <%= "#{ division.title  }" %> </h4>
+                <div class="col-md-12 record-data">
+                <% @myprograms.each do |programItem| %>
+                  <% if programItem.program.division === division.name %>
+                    <%= "#{ programItem.program.collegeName + " - " }" %>
+                    <% if programItem.public %>
+                      <span class="open-to-view"><%= "#{ "Open to View" }" %></span><br>
+                    <% else %>
+                      <span class="closed-to-view"><%= "#{ "Closed" }" %></span><br>
+                    <% end %>
+                  <% end %>
+                <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,87 @@
+<div class="media">
+  <div class="media-body">
+    <div class="row">
+      <div class="col-md-12">
+        <h3><span class="record-data"><%= "#{ @sport.athlete.firstName + ' ' + @sport.athlete.middleName + ' ' + @sport.athlete.lastName }" %></span> -
+        <span class="sport-names"><%= @sport.sportName %></span> - <span class="record-data"><%= @sport.active ? "Active" : "Inactive" %></span></h3>
+      </div>
+
+      <%= form_tag update_myprograms_myprograms_path, method: :patch do %>
+      <div class="col-md-12">
+
+          <div class="col-md-12 record-division"><h4> <%= "#{ "NCAA Division 1" }" %> </h4>
+            <% @d1myprograms.each do |myprogram| %>
+              <%= fields_for "d1myprograms[]", myprogram do |f| %>
+                <div class="checkbox">
+                  <label>
+                  <h4 class="col-md-12 record-data"><%= f.check_box :public, class: 'checkbox inline' %>
+                  <%= "#{ "   " + myprogram.program.collegeName  }" %></h4>
+                </label>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+
+          <div class="col-md-12 record-division"><h4> <%= "#{ "NCAA Division 2" }" %> </h4>
+            <% @d2myprograms.each do |myprogram| %>
+              <%= fields_for "d2myprograms[]", myprogram do |f| %>
+                <div class="checkbox">
+                  <label>
+                  <h4 class="col-md-12 record-data"><%= f.check_box :public, class: 'checkbox inline' %>
+                  <%= "#{ "   " + myprogram.program.collegeName  }" %></h4>
+                </label>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+
+          <div class="col-md-12 record-division"><h4> <%= "#{ "NCAA Division 3" }" %> </h4>
+            <% @d3myprograms.each do |myprogram| %>
+              <%= fields_for "d3myprograms[]", myprogram do |f| %>
+                <div class="checkbox">
+                  <label>
+                  <h4 class="col-md-12 record-data"><%= f.check_box :public, class: 'checkbox inline' %>
+                  <%= "#{ "   " + myprogram.program.collegeName  }" %></h4>
+                </label>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+
+          <div class="col-md-12 record-division"><h4> <%= "#{ "NAIA" }" %> </h4>
+            <% @naiamyprograms.each do |myprogram| %>
+              <%= fields_for "naiamyprograms[]", myprogram do |f| %>
+                <div class="checkbox">
+                  <label>
+                  <h4 class="col-md-12 record-data"><%= f.check_box :public, class: 'checkbox inline' %>
+                  <%= "#{ "   " + myprogram.program.collegeName  }" %></h4>
+                </label>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+
+          <div class="col-md-12 record-division"><h4> <%= "#{ "Junior College" }" %> </h4>
+            <% @jcmyprograms.each do |myprogram| %>
+              <%= fields_for "jcmyprograms[]", myprogram do |f| %>
+                <div class="checkbox">
+                  <label>
+                  <h4 class="col-md-12 record-data"><%= f.check_box :public, class: 'checkbox inline' %>
+                  <%= "#{ "   " + myprogram.program.collegeName  }" %></h4>
+                </label>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+      </div>
+
+          <div class="form-group col-md-12">
+            <br/>
+            <%= submit_tag "Save", class: 'btn btn-success'  %>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>

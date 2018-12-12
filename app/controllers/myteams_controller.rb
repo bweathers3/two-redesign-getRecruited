@@ -14,24 +14,28 @@ class MyteamsController < ApplicationController
   end
 
   def edit_schools
-    @sport = Sport.find(params[:sport_id])
-    @myteams = Myteam.where(params[:sport_id])
-  p @myteams
-    # @myteams[0].each do |item|
-    #   athlete = item.athlete_id
-    # end
-    #@athlete = Athlete.find(params[:id])
+    @sport = Sport.find(params[:id])
+    @myteams = Myteam.where(sport_id: @sport.id).order(division: :asc, collegeName: :asc).all
     @divisionNames = Division.all
   end
 
+
+
+
+  # def edit_schools
+  #   @sport = Sport.find(params[:sport_id])
+  #   @myteams = Myteam.where(params[:sport_id])
+  # p @myteams
+  #   # @myteams[0].each do |item|
+  #   #   athlete = item.athlete_id
+  #   # end
+  #   #@athlete = Athlete.find(params[:id])
+  #   @divisionNames = Division.all
+  # end
+
   def update_schools
-    #@sport = Sport.find(params[:sport_id])
-    #@athlete = Athlete.find(@sport.athlete_id)
-    @myteams = Myteam.find(params[:myteams_ids])
-    # @myteams.each do |myTeamsItem|
-    #   @myteam.assign_attributes!(params[:myTeamsItem])
-    # end
-    #p @myteam
+    p "inside update schools of myteams controller"
+    Myteam.update(params[:myteamsItems].keys, params[:myteamsItems].values)
     flash[:notice] = "Updated Schools successfully."
     redirect_to [@athlete]
   end
