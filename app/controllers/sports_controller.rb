@@ -15,7 +15,6 @@ class SportsController < ApplicationController
     @athlete = Athlete.find(params[:athlete_id])
     @sport = @athlete.sports.build(sport_params)
     buildPerformanceData
-
     if @sport.save
       flash[:notice] = "A new sport was saved successfully."
       redirect_to [@athlete]
@@ -34,10 +33,7 @@ class SportsController < ApplicationController
   def update
     @athlete = Athlete.find(params[:athlete_id])
     @sport = Sport.find(params[:id])
-    p "inside update"
-    p @sport.myteams
     @sport.assign_attributes(sport_params)
-
     if @sport.save
       flash[:notice] = "A new sport was saved successfully."
       redirect_to [@athlete]
@@ -61,19 +57,6 @@ class SportsController < ApplicationController
     end
   end
 
-  # def index_schools
-  #   @sport = Sport.find(params[:id])
-  #   @athlete = Athlete.find(@sport.athlete_id)
-  #   @divisionNames = Division.all
-  #   @myteams = Myteam.where(sport_id: @sport.id, athlete_id: @sport.athlete_id ).order(division: :asc, collegeName: :asc).all
-  #   if @myteams.count < 1
-  #     @Testingcount = "Testing count within controller to build local"
-  #     buildMyTeams
-  #   else
-  #     @Testingcount = "no new teams"
-  #   end
-  # end
-
   def index_myprograms
     @sport = Sport.find(params[:id])
     @athlete = Athlete.find(@sport.athlete_id)
@@ -86,14 +69,6 @@ class SportsController < ApplicationController
       @Testingcount = "no new Programs"
     end
   end
-
-  # def edit_schools
-  #   @sport = Sport.find(params[:id])
-  #   @myteams = @sport.myteams.order(division: :asc, collegeName: :asc).all
-  #   p "in edit schools now"
-  #   p @myteams
-  #   @divisionNames = Division.all
-  # end
 
   def edit_myprograms
     @d1myprograms, @d2myprograms, @d3myprograms, @naiamyprograms, @jcmyprograms = [], [], [], [], []
@@ -115,34 +90,48 @@ class SportsController < ApplicationController
     end
   end
 
-  # def update_schools
-  #   p "inside update schools"
-  #   #p myteams
-  #   @myTeams = Myteam.update(params[:myteams].keys, params[:myteams].values)
-  #
-  #   # @sport = Sport.find(params[:id])
-  #   # p @sport
-  #   # @sport.assign_attributes(sport_params)
-  #   # p @sport
-  #
-  #   # if @sport.save
-  #   #   flash[:notice] = "Updated Schools successfully."
-  #   #   redirect_to [@athlete]
-  #   # else
-  #   #   flash.now[:alert] = "There was an error saving the new sport. Please try again."
-  #   #   render :new
-  #   # end
-  #
-  #
-  #   # @myteams = Myteam.find(params[:sport_id])
-  #   # @sport.myteams.each do |myTeamsItem|
-  #   #   p myTeamsItem
-  #   #   #@myteam.assign_attributes!(params[:myTeamsItem])
-  #   # end
-  #   #p @myteam
-  #   # flash[:notice] = "Updated Schools successfully."
-  #   # redirect_to [@athlete]
-  # end
+  def check_all_division1
+    @sport = Sport.find(params[:id])
+    @divisionToChange = "Division 1"
+    check_all
+  end
+
+  def check_all_division2
+    @sport = Sport.find(params[:id])
+    @divisionToChange = "Division 2"
+    check_all
+  end
+
+  def check_all_division3
+    @sport = Sport.find(params[:id])
+    @divisionToChange = "Division 3"
+    check_all
+  end
+
+  def check_all_naia
+    @sport = Sport.find(params[:id])
+    @divisionToChange = "NAIA"
+    check_all
+  end
+
+  def check_all_juniorcollege
+    @sport = Sport.find(params[:id])
+    @divisionToChange = "Junior College"
+    check_all
+  end
+
+  def check_all_schools
+    @sport = Sport.find(params[:id])
+    @divisionToChange = "All"
+    check_all
+  end
+
+  def uncheck_all_schools
+    @sport = Sport.find(params[:id])
+    @divisionToChange = "All"
+    uncheck_all
+  end
+
 
   private
 
@@ -155,8 +144,6 @@ class SportsController < ApplicationController
           :threeD4score, :threeD4name, :threeD4date, :threeD5score, :threeD5name, :threeD5date, :threeD6score, :threeD6name, :threeD6date, :tenD1score,
           :tenD1name, :tenD1date, :tenD2score, :tenD2name, :tenD2date, :tenD3score, :tenD3name, :tenD3date, :tenD4score, :tenD4name,
           :tenD4date, :tenD5score, :tenD5name, :tenD5date, :tenD6score, :tenD6name, :tenD6date],
-
-        :myteam_attributes=> [ :id, :sport, :coach, :division, :collegeName, :public, :sport_id, :athlete_id ],
 
         :myprogram_attributes=> [:id, :public, :sport_id, :program_id, :_destroy ],
 
@@ -189,19 +176,41 @@ class SportsController < ApplicationController
 
     def buildMyPrograms
       @teams = []
-      @programs = Program.where(sport: @sport.sportName).order(collegeName: :desc).all
+      @programs = Program.where(sport: @sport.sportName).order(division: :DESC, collegeName: :DESC).all
       @programs.each do |item|
         team = {
           public:         false,
           sport_id:       @sport.id,
           program_id:     item.id
         }
-
         @teams << team
       end
-      p "finished load MY index_myprograms_on_sport_id"
       columns = [ :public, :sport_id, :program_id ]
       Myprogram.import columns, @teams
+   end
+
+   def check_all
+     @changes = Myprogram.where(sport_id: @sport.id).all
+     @changes.each do |item|
+       if @divisionToChange === "All"
+         Myprogram.update(item.id, :public => true)
+       else
+         if item.program.division === @divisionToChange
+           Myprogram.update(item.id, :public => true)
+         end
+       end
+     end
+     redirect_to :controller => 'athletes', :action => 'index'
+   end
+
+   def uncheck_all
+     @changes = Myprogram.where(sport_id: @sport.id).all
+     @changes.each do |item|
+       if @divisionToChange === "All"
+         Myprogram.update(item.id, :public => false)
+       end
+     end
+     redirect_to :controller => 'athletes', :action => 'index'
    end
 
 end

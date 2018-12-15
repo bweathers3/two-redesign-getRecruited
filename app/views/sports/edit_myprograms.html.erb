@@ -6,10 +6,26 @@
         <span class="sport-names"><%= @sport.sportName %></span> - <span class="record-data"><%= @sport.active ? "Active" : "Inactive" %></span></h3>
       </div>
 
+      <div class="col-md-12">
+        <%= link_to "Check All Division I Programs", check_all_division1_sport_path, class: 'btn btn-info btn-sm', method: :put %>
+        <%= link_to "Check All Division II Programs", check_all_division2_sport_path, class: 'btn btn-info btn-sm', method: :put %>
+        <%= link_to "Check All Division III Programs", check_all_division3_sport_path, class: 'btn btn-info btn-sm', method: :put %>
+        <%= link_to "Check All NAIA Programs", check_all_naia_sport_path, class: 'btn btn-info btn-sm', method: :put %>
+        <%= link_to "Check All Junior College Programs", check_all_juniorcollege_sport_path, class: 'btn btn-info btn-sm', method: :put %>
+      </div>
+      <br>
+
+      <div class="col-md-12">
+        <%= link_to "Check All Schools for All Divisions", check_all_schools_sport_path, class: 'btn btn-success btn-sm', method: :put %>
+        <%= link_to "UnCheck All Schools for All Divisions", uncheck_all_schools_sport_path, class: 'btn btn-danger btn-sm', method: :put %>
+      </div>
+
+
       <%= form_tag update_myprograms_myprograms_path, method: :patch do %>
       <div class="col-md-12">
 
           <div class="col-md-12 record-division"><h4> <%= "#{ "NCAA Division 1" }" %> </h4>
+
             <% @d1myprograms.each do |myprogram| %>
               <%= fields_for "d1myprograms[]", myprogram do |f| %>
                 <div class="checkbox">
@@ -74,13 +90,12 @@
             <% end %>
           </div>
       </div>
-
-          <div class="form-group col-md-12">
-            <br/>
-            <%= submit_tag "Save", class: 'btn btn-success'  %>
-          </div>
+        <div class="form-group col-md-12">
+          <br/>
+          <%= submit_tag "Save", class: 'btn btn-success'  %>
         </div>
       <% end %>
+        </div>
 
     </div>
   </div>

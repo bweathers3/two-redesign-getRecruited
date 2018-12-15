@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
 
   resources :athletes do
-    resources :myteams
+    #resources :myteams
     #resources :academic
     # resources :address
     # resources :contact
@@ -28,29 +28,19 @@ Rails.application.routes.draw do
 
     get 'index_myprograms', on: :member
     get 'edit_myprograms', on: :member
-    patch 'update_myprograms', on: :collection
 
+    put 'check_all_division1', on: :member
+    put 'check_all_division2', on: :member
+    put 'check_all_division3', on: :member
+    put 'check_all_naia', on: :member
+    put 'check_all_juniorcollege', on: :member
+    put 'check_all_schools', on: :member
+    put 'uncheck_all_schools', on: :member
 
-    # member { get :index_schools }
-    # collection { get :edit_schools }
-    # collection { patch :update_schools }
-
-    # resources :myteams do
-    #   collection { get :edit_schools }
-    # end
-
-    # resources :myteams do
-    #   collection { patch :update_schools }
-    # end
-    #resources :myprogram
   end
 
-  #resources :myteams
 
-  # resources :myteams do
-  #   member { get :edit_schools }
-  #   collection { patch :update_schools }
-  # end
+
 
   get 'programs/index'
   get 'programs/import'
@@ -63,11 +53,6 @@ Rails.application.routes.draw do
   resources :myprograms do
     patch 'update_myprograms', on: :collection
   end
-  # resources :programs do
-  #   resources :myprogram
-  # end
-
-
 
   get 'about' => 'welcome#about'
   get 'contact' => 'welcome#contact'

@@ -8,7 +8,11 @@
       </div>
       <div class="col-md-3">
         <h3>
-        <%= link_to "Edit My Programs", edit_myprograms_sport_path(@sport), class: 'btn btn-primary' %>
+          <% if @sport.active == true %>
+            <%= link_to "Edit My Programs", edit_myprograms_sport_path(@sport), class: 'btn btn-primary' %>
+          <% else %>
+            <span class="closed-to-view"><%= "#{ " Sports which are inactive will not be viewable to coaches, all schools will be closed. "}" %></span>
+          <% end %>
         </h3>
       </div>
 
