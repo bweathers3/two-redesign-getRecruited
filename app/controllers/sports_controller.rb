@@ -34,9 +34,12 @@ class SportsController < ApplicationController
     @athlete = Athlete.find(params[:athlete_id])
     @sport = Sport.find(params[:id])
     @sport.assign_attributes(sport_params)
+    p "in update"
+    p @sport.active
+
     if @sport.save
       flash[:notice] = "A new sport was saved successfully."
-      redirect_to [@athlete]
+      uncheck_all_schools_inactive
     else
       flash.now[:alert] = "There was an error saving the new sport. Please try again."
       render :new
@@ -61,6 +64,7 @@ class SportsController < ApplicationController
     @sport = Sport.find(params[:id])
     @athlete = Athlete.find(@sport.athlete_id)
     @divisionNames = Division.all
+    p @divisionNames
     @myprograms = Myprogram.where(sport_id: @sport.id).all
     if @myprograms.count < 1
       @Testingcount = "Testing count within controller to build local"
@@ -90,46 +94,67 @@ class SportsController < ApplicationController
     end
   end
 
-  def check_all_division1
+  def check_all_divisions
+    @divisionToChange = params[:test]
     @sport = Sport.find(params[:id])
-    @divisionToChange = "Division 1"
     check_all
   end
 
-  def check_all_division2
-    @sport = Sport.find(params[:id])
-    @divisionToChange = "Division 2"
-    check_all
-  end
+  #
+  # def check_all_division1
+  #   test = params[:test]
+  #   @sport = Sport.find(params[:id])
+  #   p test
+  #   @divisionToChange = "Division 1"
+  #   check_all
+  # end
 
-  def check_all_division3
-    @sport = Sport.find(params[:id])
-    @divisionToChange = "Division 3"
-    check_all
-  end
+  # def check_all_division2
+  #   @sport = Sport.find(params[:id])
+  #   @divisionToChange = "Division 2"
+  #   check_all
+  # end
+  #
+  # def check_all_division3
+  #   @sport = Sport.find(params[:id])
+  #   @divisionToChange = "Division 3"
+  #   check_all
+  # end
+  #
+  # def check_all_naia
+  #   @sport = Sport.find(params[:id])
+  #   @divisionToChange = "NAIA"
+  #   check_all
+  # end
 
-  def check_all_naia
-    @sport = Sport.find(params[:id])
-    @divisionToChange = "NAIA"
-    check_all
-  end
+  # def check_all_juniorcollege
+  #   @sport = Sport.find(params[:id])
+  #   @divisionToChange = "Junior College"
+  #   check_all
+  # end
 
-  def check_all_juniorcollege
-    @sport = Sport.find(params[:id])
-    @divisionToChange = "Junior College"
-    check_all
-  end
-
-  def check_all_schools
-    @sport = Sport.find(params[:id])
-    @divisionToChange = "All"
-    check_all
-  end
+  # def check_all_schools
+  #   @sport = Sport.find(params[:id])
+  #   @divisionToChange = "All"
+  #   check_all
+  # end
 
   def uncheck_all_schools
     @sport = Sport.find(params[:id])
     @divisionToChange = "All"
     uncheck_all
+    redirect_to :controller => 'athletes', :action => 'index'
+  end
+
+  def uncheck_all_schools_inactive
+    @sport = Sport.find(params[:id])
+    @divisionToChange = "All"
+    p "in the uncheck_all_schools_inactive"
+    if @sport.active === false
+      p "in the uncheck_all_schools_inactive with @sport.active === false"
+      uncheck_all
+    end
+    redirect_to [@athlete]
   end
 
 
@@ -204,13 +229,13 @@ class SportsController < ApplicationController
    end
 
    def uncheck_all
+     p "in the uncheck_all"
      @changes = Myprogram.where(sport_id: @sport.id).all
      @changes.each do |item|
        if @divisionToChange === "All"
          Myprogram.update(item.id, :public => false)
        end
      end
-     redirect_to :controller => 'athletes', :action => 'index'
    end
 
 end

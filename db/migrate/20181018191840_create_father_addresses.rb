@@ -1,7 +1,7 @@
 class CreateFatherAddresses < ActiveRecord::Migration[5.1]
   def change
     create_table :father_addresses do |t|
-      t.string :street
+      t.string :street, :default => "Information Needed if Different than Above"
       t.string :street2
       t.string :city
       t.string :state

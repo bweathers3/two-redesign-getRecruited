@@ -29,12 +29,13 @@ Rails.application.routes.draw do
     get 'index_myprograms', on: :member
     get 'edit_myprograms', on: :member
 
-    put 'check_all_division1', on: :member
-    put 'check_all_division2', on: :member
-    put 'check_all_division3', on: :member
-    put 'check_all_naia', on: :member
-    put 'check_all_juniorcollege', on: :member
-    put 'check_all_schools', on: :member
+    put 'check_all_divisions', on: :member
+    # put 'check_all_division1', on: :member
+    # put 'check_all_division2', on: :member
+    # put 'check_all_division3', on: :member
+    # put 'check_all_naia', on: :member
+    # put 'check_all_juniorcollege', on: :member
+    # put 'check_all_schools', on: :member
     put 'uncheck_all_schools', on: :member
 
   end

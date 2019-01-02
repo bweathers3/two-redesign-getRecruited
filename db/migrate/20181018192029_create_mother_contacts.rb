@@ -1,7 +1,7 @@
 class CreateMotherContacts < ActiveRecord::Migration[5.1]
   def change
     create_table :mother_contacts do |t|
-      t.string :firstName
+      t.string :firstName, :default => "Information Needed"
       t.string :lastName
       t.string :phone
       t.string :email

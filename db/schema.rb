@@ -16,12 +16,13 @@ ActiveRecord::Schema.define(version: 20181124135446) do
   enable_extension "plpgsql"
 
   create_table "academics", force: :cascade do |t|
-    t.string "schoolName"
+    t.string "schoolName", default: "Information Needed"
     t.string "phone"
     t.string "satMath"
     t.string "satEnglish"
     t.string "satTotal"
     t.string "actTotal"
+    t.string "tofelTotal"
     t.string "gpa"
     t.string "gpaScale"
     t.string "classRank"
@@ -34,7 +35,7 @@ ActiveRecord::Schema.define(version: 20181124135446) do
   end
 
   create_table "addresses", force: :cascade do |t|
-    t.string "street"
+    t.string "street", default: "Information Needed"
     t.string "street2"
     t.string "city"
     t.string "state"
@@ -80,7 +81,7 @@ ActiveRecord::Schema.define(version: 20181124135446) do
   end
 
   create_table "current_addresses", force: :cascade do |t|
-    t.string "street"
+    t.string "street", default: "Information Needed if Different than Above"
     t.string "street2"
     t.string "city"
     t.string "state"
@@ -161,7 +162,7 @@ ActiveRecord::Schema.define(version: 20181124135446) do
   end
 
   create_table "father_addresses", force: :cascade do |t|
-    t.string "street"
+    t.string "street", default: "Information Needed if Different than Above"
     t.string "street2"
     t.string "city"
     t.string "state"
@@ -174,7 +175,7 @@ ActiveRecord::Schema.define(version: 20181124135446) do
   end
 
   create_table "father_contacts", force: :cascade do |t|
-    t.string "firstName"
+    t.string "firstName", default: "Information Needed"
     t.string "lastName"
     t.string "phone"
     t.string "email"
@@ -185,7 +186,7 @@ ActiveRecord::Schema.define(version: 20181124135446) do
   end
 
   create_table "mother_addresses", force: :cascade do |t|
-    t.string "street"
+    t.string "street", default: "Information Needed if Different than Above"
     t.string "street2"
     t.string "city"
     t.string "state"
@@ -198,7 +199,7 @@ ActiveRecord::Schema.define(version: 20181124135446) do
   end
 
   create_table "mother_contacts", force: :cascade do |t|
-    t.string "firstName"
+    t.string "firstName", default: "Information Needed"
     t.string "lastName"
     t.string "phone"
     t.string "email"
@@ -252,7 +253,7 @@ ActiveRecord::Schema.define(version: 20181124135446) do
   end
 
   create_table "school_addresses", force: :cascade do |t|
-    t.string "street"
+    t.string "street", default: "Information Needed"
     t.string "street2"
     t.string "city"
     t.string "state"
@@ -265,7 +266,7 @@ ActiveRecord::Schema.define(version: 20181124135446) do
   end
 
   create_table "siblings", force: :cascade do |t|
-    t.text "siblingNames"
+    t.text "siblingNames", default: "This is optional Information"
     t.bigint "athlete_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

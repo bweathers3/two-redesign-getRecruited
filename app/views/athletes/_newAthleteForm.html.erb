@@ -1,11 +1,12 @@
 <%= form_with(model: athlete, local: true) do |form| %>
   <div class="row">
      <div class="col-md-6">
-       <p>Guidelines for new athletes</p>
+       <p class="gray-text">Guidelines for new Athletes</p>
        <ul>
          <li>Please enter both a first and last name.</li>
          <li>Please make sure the year an athlete intends to start school is correct.</li>
-         <li>Make sure you check the box for active.</li>
+         <li>Make sure you check the box for active. Inactive athletes will not be viewable by coaches.</li>
+         <li class= "closed-to-view ">To create a new athlete record you only need to complete the first section. The contact, addresses and parent's information can be completed later.</li>
        </ul>
      </div>
      <div class="col-md-6">
@@ -37,6 +38,13 @@
               <%= form.text_field :lastName, class: 'form-control', id: :athlete_lastName %>
             </div>
 
+            <div class="checkbox">
+              <label>
+              <h4><%= form.check_box :active, class: 'checkbox inline', id: :athlete_active %>
+              <%= "#{ "Active" }" %></h4>
+            </label>
+            </div>
+
             <div class="form-group">
               <%= form.label "Perferred Name" %>
               <%= form.text_field :preferredName, class: 'form-control', id: :athlete_perferredName %>
@@ -49,21 +57,17 @@
                 'Sept. 2022 - May 2023', 'Sept. 2023 - May 2024' ], class: 'form-control', id: :athlete_yearStartingSchool  %>
             </div>
 
-            <div class="form-group">
-              <%= form.label "Active" %>
-              <%= form.check_box :active, class: 'form-control', id: :athlete_active %>
-            </div>
       </div>
     </div>
 
-  <h2> Contact Information </h2>
+  <h2 class="record-data"> Contact Information </h2>
   <div class="row">
      <div class="col-md-6">
-       <p>Guidelines for new contact information</p>
-       <ul>
-         <li>Please enter both a first and last name.</li>
-         <li>Please make sure the year an athlete intends to start school is correct.</li>
-         <li>Make sure you check the box for active.</li>
+       <p class="gray-text">Guidelines for Contact information</p>
+       <ul class= "closed-to-view ">
+         <li>We recommend that athletes set up an email address specifically for recruiting.</li>
+         <li>You may also want to consider the say for a contact phone.</li>
+         <li>Remember that the email address and phone number used as contact information will be seen by a large number of coaches.</li>
        </ul>
      </div>
      <div class="col-md-6">
@@ -82,14 +86,12 @@
     </div>
 
 
-    <h2> Address Information </h2>
+    <h2 class="record-data"> Address Information </h2>
     <div class="row">
        <div class="col-md-6">
-         <p>Guidelines for new address information</p>
+         <p class="gray-text">Guidelines for Address information</p>
          <ul>
-           <li>Please enter both a first and last name.</li>
-           <li>Please make sure the year an athlete intends to start school is correct.</li>
-           <li>Make sure you check the box for active.</li>
+           <li>The Address entered here should be the athlete's preminate address.</li>
          </ul>
        </div>
        <div class="col-md-6">
@@ -128,14 +130,13 @@
       </div>
     </div>
 
-    <h2> Current Address Information </h2>
+    <h2 class="record-data"> Current Address Information </h2>
     <div class="row">
        <div class="col-md-6">
-         <p>Guidelines for new address information</p>
+         <p class="gray-text">Guidelines for Address information</p>
          <ul>
-           <li>Please enter both a first and last name.</li>
-           <li>Please make sure the year an athlete intends to start school is correct.</li>
-           <li>Make sure you check the box for active.</li>
+           <li>The Address entered here should be the athlete's current address if it is different than the address above.</li>
+           <li>You don not need to reenter the address if it is the same as the one above.</li>
          </ul>
        </div>
        <div class="col-md-6">
@@ -174,14 +175,13 @@
       </div>
     </div>
 
-    <h2> Academic Information </h2>
+    <h2 class="record-data"> Academic Information </h2>
     <div class="row">
        <div class="col-md-6">
-         <p>Guidelines for new address information</p>
+         <p class="gray-text">Guidelines for Academic information</p>
          <ul>
-           <li>Please enter both a first and last name.</li>
-           <li>Please make sure the year an athlete intends to start school is correct.</li>
-           <li>Make sure you check the box for active.</li>
+           <li>We realize academic information may change often.</li>
+           <li>Make sure it keep your academic information current.</li>
          </ul>
        </div>
        <div class="col-md-6">
@@ -217,6 +217,11 @@
             </div>
 
             <div class="form-group">
+              <%= academicForm.label "TOFEL Total" %>
+              <%= academicForm.text_field :tofelTotal, class: 'form-control', id: :academic_tofelTotal %>
+            </div>
+
+            <div class="form-group">
               <%= academicForm.label "GPA" %>
               <%= academicForm.text_field :gpa, class: 'form-control', id: :academic_gpa %>
             </div>
@@ -245,14 +250,13 @@
       </div>
     </div>
 
-    <h2> Parent 1 Contact Information </h2>
+    <h2 class="record-data"> Parent 1 Contact Information </h2>
     <div class="row">
        <div class="col-md-6">
-         <p>Guidelines for new Parent 1 contact information</p>
+         <p class="gray-text">Guidelines for Parent 1 contact information</p>
          <ul>
            <li>Please enter both a first and last name.</li>
-           <li>Please make sure the year an athlete intends to start school is correct.</li>
-           <li>Make sure you check the box for active.</li>
+           <li>Often families who have set up a recruiting specific email adrress for the athlete use the same address for their parents.</li>
          </ul>
        </div>
        <div class="col-md-6">
@@ -281,14 +285,12 @@
       </div>
     </div>
 
-    <h2> Parent 1 Address Information </h2>
+    <h2 class="record-data"> Parent 1 Address Information </h2>
     <div class="row">
        <div class="col-md-6">
-         <p>Guidelines for new Parent 1 address information</p>
+         <p class="gray-text">Guidelines for Parent 1 address information</p>
          <ul>
-           <li>Please enter both a first and last name.</li>
-           <li>Please make sure the year an athlete intends to start school is correct.</li>
-           <li>Make sure you check the box for active.</li>
+           <li>If no address is given in this section it is assumed it is the same as the one given for the athlete.</li>
          </ul>
        </div>
        <div class="col-md-6">
@@ -327,14 +329,13 @@
       </div>
     </div>
 
-    <h2> Parent 2 Contact Information </h2>
+    <h2 class="record-data"> Parent 2 Contact Information </h2>
     <div class="row">
        <div class="col-md-6">
-         <p>Guidelines for new Parent 2 contact information</p>
+         <p class="gray-text">Guidelines for Parent 2 contact information</p>
          <ul>
            <li>Please enter both a first and last name.</li>
-           <li>Please make sure the year an athlete intends to start school is correct.</li>
-           <li>Make sure you check the box for active.</li>
+           <li>Often families who have set up a recruiting specific email adrress for the athlete use the same address for their parents.</li>
          </ul>
        </div>
        <div class="col-md-6">
@@ -363,14 +364,12 @@
       </div>
     </div>
 
-    <h2> Parent 2 Address Information </h2>
+    <h2 class="record-data"> Parent 2 Address Information </h2>
     <div class="row">
        <div class="col-md-6">
-         <p>Guidelines for new Parent 2 address information</p>
+         <p class="gray-text">Guidelines for Parent 2 address information</p>
          <ul>
-           <li>Please enter both a first and last name.</li>
-           <li>Please make sure the year an athlete intends to start school is correct.</li>
-           <li>Make sure you check the box for active.</li>
+           <li>If no address is given in this section it is assumed it is the same as the one given for the athlete.</li>
          </ul>
        </div>
        <div class="col-md-6">
@@ -409,14 +408,14 @@
       </div>
     </div>
 
-    <h2> Counselor Contact Information </h2>
+    <h2 class="record-data"> Counselor Contact Information </h2>
     <div class="row">
        <div class="col-md-6">
-         <p>Guidelines for new Counselor contact information</p>
+         <p class="gray-text">Guidelines for Counselor contact information</p>
          <ul>
            <li>Please enter both a first and last name.</li>
-           <li>Please make sure the year an athlete intends to start school is correct.</li>
-           <li>Make sure you check the box for active.</li>
+           <li>Counselor Contact Information can be very important for coaches when they start to determine an athlete's "fit" for schools.</li>
+           <li>Be care to make sure email addresses and phone numbers are correct.</li>
          </ul>
        </div>
        <div class="col-md-6">
@@ -445,14 +444,12 @@
       </div>
     </div>
 
-    <h2> School Address Information </h2>
+    <h2 class="record-data"> School Address Information </h2>
     <div class="row">
        <div class="col-md-6">
-         <p>Guidelines for new School address information</p>
+         <p class="gray-text">Guidelines for School address information</p>
          <ul>
-           <li>Please enter both a first and last name.</li>
-           <li>Please make sure the year an athlete intends to start school is correct.</li>
-           <li>Make sure you check the box for active.</li>
+
          </ul>
        </div>
        <div class="col-md-6">
@@ -491,14 +488,14 @@
       </div>
     </div>
 
-    <h2> Sibling Information </h2>
+    <h2 class="record-data"> Sibling Information </h2>
     <div class="row">
        <div class="col-md-6">
-         <p>Guidelines for new Sibling information</p>
+         <p class="gray-text">Guidelines for Sibling information</p>
          <ul>
-           <li>Please enter both a first and last name.</li>
-           <li>Please make sure the year an athlete intends to start school is correct.</li>
-           <li>Make sure you check the box for active.</li>
+           <li>Sibling Information is considered very optional.</li>
+           <li>However, coaches find it useful particuarly in the cases where siblings are also athletes.</li>
+           <li>We recommending using both first and last names, if they are also athletes you may want note their interest.</li>
          </ul>
        </div>
        <div class="col-md-6">

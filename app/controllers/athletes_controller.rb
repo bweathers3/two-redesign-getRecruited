@@ -55,10 +55,12 @@ class AthletesController < ApplicationController
   def update
     @athlete = Athlete.find(params[:id])
     @athlete.assign_attributes(athlete_params)
+    p "in athlete update"
 
     if @athlete.save
       flash[:notice] = "Athlete was updated successfully."
-      redirect_to @athlete
+      uncheck_all_schools_inactive_athlete
+      #redirect_to @athlete
     else
       flash.now[:alert] = "There was an error saving the athlete. Please try again."
       render :new
@@ -76,20 +78,31 @@ class AthletesController < ApplicationController
     end
   end
 
+  def uncheck_all_schools_inactive_athlete
+    # @sport = Sport.find(params[:id])
+    # @divisionToChange = "All"
+    p "in the uncheck_all_schools_inactive_athlete"
+    # if @sport.active === false
+    #   p "in the uncheck_all_schools_inactive with @sport.active === false"
+    #   uncheck_all
+    # end
+    redirect_to [@athlete]
+  end
+
 
   private
 
   def athlete_params
     params.require(:athlete).permit(:firstName, :middleName, :lastName, :preferredName, :yearStartingSchool, :active,
-      :academic_attributes=> [:schoolName, :phone, :satMath, :satEnglish, :satTotal, :actTotal, :gpa, :gpaScale, :classRank, :classSize, :notes],
+      :academic_attributes=> [:schoolName, :phone, :satMath, :satEnglish, :satTotal, :actTotal,  :tofelTotal, :gpa, :gpaScale, :classRank, :classSize, :notes],
       :address_attributes=> [:street, :street2, :city, :state, :zip, :country],
       :contact_attributes=> [:phone, :email],
       :current_address_attributes=> [:street, :street2, :city, :state, :zip, :country],
-      :counselor_contact_attributes=> [:firstName, :middleName, :phone, :email],
+      :counselor_contact_attributes=> [:firstName, :lastName, :phone, :email],
       :father_address_attributes=> [:street, :street2, :city, :state, :zip, :country],
-      :father_contact_attributes=> [:firstName, :middleName, :phone, :email],
+      :father_contact_attributes=> [:firstName, :lastName, :phone, :email],
       :mother_address_attributes=> [:street, :street2, :city, :state, :zip, :country],
-      :mother_contact_attributes=> [:firstName, :middleName, :phone, :email],
+      :mother_contact_attributes=> [:firstName, :lastName, :phone, :email],
       :school_address_attributes=> [:street, :street2, :city, :state, :zip, :country],
       :sibling_attributes=> [:siblingNames]
     )

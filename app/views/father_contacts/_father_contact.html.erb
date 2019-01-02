@@ -1,8 +1,14 @@
 <div class="media">
    <div class="media-body">
-     <h5 class="col-md-3 record-title"><%= "#{ 'First Name:' }"%></h5> <h5 class="col-md-9 record-data"><%= "#{ @athlete.father_contact.firstName  }"  %></h5>
-     <h5 class="col-md-3 record-title"><%= "#{ 'Last Name:' }"%></h5> <h5 class="col-md-9 record-data"><%= "#{ @athlete.father_contact.lastName  }" %></h5>
-     <h5 class="col-md-3 record-title"><%= "#{ 'Email:' }"%></h5> <h5 class="col-md-9 record-data"><%= "#{ @athlete.father_contact.email }" %></h5>
-     <h5 class="col-md-3 record-title"><%= "#{ 'Phone:' }"%></h5> <h5 class="col-md-9 record-data"><%= "#{ @athlete.father_contact.phone  }" %></h5>
+     <div class="row">
+       <h5 class="col-md-2 record-title pad-left"><%= "#{ 'First Name:' }"%></h5> <h5 class="col-md-10 record-data"><%= "#{ @athlete.father_contact.firstName  }"  %></h5>
+     </div>
+     <div class="row">
+       <h5 class="col-md-2 record-title pad-left"><%= "#{ 'Last Name:' }"%></h5> <h5 class="col-md-10 record-data"><%= "#{ @athlete.father_contact.lastName  }" %></h5>
+     </div>
+     <div class="row">
+       <h5 class="col-md-2 record-title pad-left"><%= "#{ 'Email:' }"%></h5> <h5 class="col-md-4 record-data"><%= "#{ @athlete.father_contact.email }" %></h5>
+       <h5 class="col-md-2 record-title pad-left"><%= "#{ 'Phone:' }"%></h5> <h5 class="col-md-4 record-data"><%= "#{ @athlete.father_contact.phone  }" %></h5>
+     </div>
    </div>
 </div>

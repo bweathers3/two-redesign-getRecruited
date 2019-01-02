@@ -62,7 +62,7 @@ test4 = User.create!(
 
 users = User.all
 
-20.times do
+15.times do
   Athlete.create!(
       user:   users.sample,
       firstName:                    Faker::Name.first_name,
@@ -93,6 +93,7 @@ athletes.each do |item|
   satEnglish:   Faker::Number.between(200, 800),
   satTotal:     Faker::Number.between(400, 1600),
   actTotal:     Faker::Number.between(2, 37),
+  tofelTotal:   Faker::Number.between(400, 1600),
   gpa:          Faker::Number.between(0, 4),
   gpaScale:     Faker::Number.between(0, 8),
   classRank:    Faker::Number.between(1, 1200),
@@ -201,7 +202,7 @@ end
 
 
 
-32.times do
+20.times do
   Sport.create!(
     athlete:      athletes.sample,
     sportName:    ["Men's Swimming", "Women's Swimming", "Men's Diving", "Women's Diving", "Men's Water Polo", "Women's Water Polo" ].sample,

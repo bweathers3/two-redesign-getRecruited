@@ -1,7 +1,7 @@
 class CreateAcademics < ActiveRecord::Migration[5.1]
   def change
     create_table :academics do |t|
-      t.string :schoolName
+      t.string :schoolName, :default => "Information Needed"
       t.string :city
       t.string :state
       t.string :country
@@ -10,6 +10,7 @@ class CreateAcademics < ActiveRecord::Migration[5.1]
       t.string :satEnglish
       t.string :satTotal
       t.string :actTotal
+      t.string :tofelTotal
       t.string :gpa
       t.string :gpaScale
       t.string :classRank

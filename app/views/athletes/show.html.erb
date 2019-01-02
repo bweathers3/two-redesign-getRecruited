@@ -1,6 +1,6 @@
 
 <div class="col-md-8">
-  <h3><%= "#{ @athlete.firstName + ' ' + @athlete.middleName + ' ' + @athlete.lastName }" %> - <%= @athlete.active ? "Active" : "Inactive" %></h3>
+  <h3><%= "#{ @athlete.firstName + ' ' + @athlete.middleName + ' ' + @athlete.lastName }" %> - <span class="record-data"><%= @athlete.active ? "Active" : "Inactive" %></span></h3>
 </div>
 
 <div class="col-md-4">
@@ -10,10 +10,12 @@
   <%= link_to "Delete Athlete", @athlete, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this athlete?'} %>
 </div>
 
-<div class="col-md-7">
+<div class="col-md-12 row">
   <% @athlete.preferredName.nil?  ?  @athlete.preferredName = "None" : @athlete.preferredName %>
-  <h5 class="col-md-5 record-title"><%= "#{ 'Preferred Name:' }"%></h5> <h5 class="col-md-7 record-data"><%= "#{ @athlete.preferredName  }"  %></h5>
-  <h5 class="col-md-5 record-title"><%= "#{ 'Planning to Start School In:' }"%></h5> <h5 class="col-md-7 record-data"><%= "#{ @athlete.yearStartingSchool  }" %></h5>
+  <h5 class="col-md-3 record-title"><%= "#{ 'Preferred Name:' }"%></h5> <h5 class="col-md-9 record-data"><%= "#{ @athlete.preferredName  }"  %></h5>
+</div>
+<div class="col-md-12 row">
+  <h5 class="col-md-3 record-title"><%= "#{ 'Planning to Start School In:' }"%></h5> <h5 class="col-md-9 record-data"><%= "#{ @athlete.yearStartingSchool  }" %></h5>
 </div>
 
 <div class="col-md-12">
