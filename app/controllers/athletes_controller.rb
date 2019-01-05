@@ -55,7 +55,7 @@ class AthletesController < ApplicationController
   def update
     @athlete = Athlete.find(params[:id])
     @athlete.assign_attributes(athlete_params)
-    p "in athlete update"
+    #p "in athlete update"
 
     if @athlete.save
       flash[:notice] = "Athlete was updated successfully."
@@ -79,13 +79,19 @@ class AthletesController < ApplicationController
   end
 
   def uncheck_all_schools_inactive_athlete
-    # @sport = Sport.find(params[:id])
-    # @divisionToChange = "All"
-    p "in the uncheck_all_schools_inactive_athlete"
-    # if @sport.active === false
-    #   p "in the uncheck_all_schools_inactive with @sport.active === false"
-    #   uncheck_all
-    # end
+    #p "in the uncheck_all_schools_inactive_athlete"
+    if @athlete.active === false
+      #p "in the uncheck_all_schools_inactive with @athlete.active === false"
+      @sports = Sport.where(athlete_id: @athlete.id).all
+      #p @sports
+        @sports.each do |sport|
+          Sport.update(sport.id, :active => false)
+          @myprograms = Myprogram.where(sport_id: sport.id).all
+          @myprograms.each do |item|
+            Myprogram.update(item.id, :public => false)
+          end
+        end
+     end
     redirect_to [@athlete]
   end
 

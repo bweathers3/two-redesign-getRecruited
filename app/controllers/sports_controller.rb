@@ -26,7 +26,7 @@ class SportsController < ApplicationController
 
   def edit
     @sport = Sport.find(params[:id])
-    @jcMyteams = Myteam.where(sport_id: @sport.id, athlete_id: @sport.athlete_id, division: "Junior College").order(division: :asc, collegeName: :asc).all
+    #@jcMyteams = Myteam.where(sport_id: @sport.id, athlete_id: @sport.athlete_id, division: "Junior College").order(division: :asc, collegeName: :asc).all
     @divisionNames = Division.all
   end
 
@@ -34,8 +34,8 @@ class SportsController < ApplicationController
     @athlete = Athlete.find(params[:athlete_id])
     @sport = Sport.find(params[:id])
     @sport.assign_attributes(sport_params)
-    p "in update"
-    p @sport.active
+    #p "in update"
+    #p @sport.active
 
     if @sport.save
       flash[:notice] = "A new sport was saved successfully."
@@ -64,7 +64,7 @@ class SportsController < ApplicationController
     @sport = Sport.find(params[:id])
     @athlete = Athlete.find(@sport.athlete_id)
     @divisionNames = Division.all
-    p @divisionNames
+    #p @divisionNames
     @myprograms = Myprogram.where(sport_id: @sport.id).all
     if @myprograms.count < 1
       @Testingcount = "Testing count within controller to build local"
@@ -149,9 +149,9 @@ class SportsController < ApplicationController
   def uncheck_all_schools_inactive
     @sport = Sport.find(params[:id])
     @divisionToChange = "All"
-    p "in the uncheck_all_schools_inactive"
+    #p "in the uncheck_all_schools_inactive"
     if @sport.active === false
-      p "in the uncheck_all_schools_inactive with @sport.active === false"
+      #p "in the uncheck_all_schools_inactive with @sport.active === false"
       uncheck_all
     end
     redirect_to [@athlete]
@@ -212,24 +212,24 @@ class SportsController < ApplicationController
       end
       columns = [ :public, :sport_id, :program_id ]
       Myprogram.import columns, @teams
-   end
+    end
 
-   def check_all
-     @changes = Myprogram.where(sport_id: @sport.id).all
-     @changes.each do |item|
-       if @divisionToChange === "All"
-         Myprogram.update(item.id, :public => true)
-       else
-         if item.program.division === @divisionToChange
-           Myprogram.update(item.id, :public => true)
-         end
-       end
-     end
-     redirect_to :controller => 'athletes', :action => 'index'
-   end
+    def check_all
+      @changes = Myprogram.where(sport_id: @sport.id).all
+        @changes.each do |item|
+            if @divisionToChange === "All"
+            Myprogram.update(item.id, :public => true)
+            else
+            if item.program.division === @divisionToChange
+             Myprogram.update(item.id, :public => true)
+            end
+        end
+      end
+         redirect_to :controller => 'athletes', :action => 'index'
+    end
 
    def uncheck_all
-     p "in the uncheck_all"
+     #p "in the uncheck_all"
      @changes = Myprogram.where(sport_id: @sport.id).all
      @changes.each do |item|
        if @divisionToChange === "All"

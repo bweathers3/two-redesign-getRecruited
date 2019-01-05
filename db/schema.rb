@@ -253,7 +253,7 @@ ActiveRecord::Schema.define(version: 20181124135446) do
   end
 
   create_table "school_addresses", force: :cascade do |t|
-    t.string "street", default: "Information Needed"
+    t.string "street"
     t.string "street2"
     t.string "city"
     t.string "state"
