@@ -65,7 +65,13 @@ class SportsController < ApplicationController
     @athlete = Athlete.find(@sport.athlete_id)
     @divisionNames = Division.all
     #p @divisionNames
+    #User.joins(:projects).where(projects: { zipcode: 30332 })
     @myprograms = Myprogram.where(sport_id: @sport.id).all
+    p @myprograms
+    #@myprograms.program.sort_by!(&:collegeName)
+
+    #refactor messages out below
+
     if @myprograms.count < 1
       @Testingcount = "Testing count within controller to build local"
       buildMyPrograms
@@ -202,6 +208,7 @@ class SportsController < ApplicationController
     def buildMyPrograms
       @teams = []
       @programs = Program.where(sport: @sport.sportName).order(division: :DESC, collegeName: :DESC).all
+
       @programs.each do |item|
         team = {
           public:         false,
@@ -220,13 +227,13 @@ class SportsController < ApplicationController
             if @divisionToChange === "All"
             Myprogram.update(item.id, :public => true)
             else
-            if item.program.division === @divisionToChange
-             Myprogram.update(item.id, :public => true)
+              if item.program.division === @divisionToChange
+               Myprogram.update(item.id, :public => true)
+              end
             end
-        end
-      end
+         end
          redirect_to :controller => 'athletes', :action => 'index'
-    end
+     end
 
    def uncheck_all
      #p "in the uncheck_all"
