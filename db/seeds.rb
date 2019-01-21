@@ -34,33 +34,33 @@ divName5 = Division.create!(
 # create User turned off for Heroku
 #
 #
-# test1 = User.create!(
-#   firstName:    Faker::Name.first_name,
-#   lastName:     Faker::Name.unique.last_name,
-#   email:        'test1@gmail.com',
-#   password:     'helloworld'
-# )
-#
-# test2 = User.create!(
-#   firstName:    Faker::Name.first_name,
-#   lastName:     Faker::Name.unique.last_name,
-#   email:        'test2@gmail.com',
-#   password:     'helloworld'
-# )
-#
-# test3 = User.create!(
-#   firstName:    Faker::Name.first_name,
-#   lastName:     Faker::Name.unique.last_name,
-#   email:        'test3@gmail.com',
-#   password:     'helloworld'
-# )
-#
-# test4 = User.create!(
-#   firstName:    Faker::Name.first_name,
-#   lastName:     Faker::Name.unique.last_name,
-#   email:        'test4@gmail.com',
-#   password:     'helloworld'
-# )
+test1 = User.create!(
+  firstName:    Faker::Name.first_name,
+  lastName:     Faker::Name.unique.last_name,
+  email:        'test1@gmail.com',
+  password:     'helloworld'
+)
+
+test2 = User.create!(
+  firstName:    Faker::Name.first_name,
+  lastName:     Faker::Name.unique.last_name,
+  email:        'test2@gmail.com',
+  password:     'helloworld'
+)
+
+test3 = User.create!(
+  firstName:    Faker::Name.first_name,
+  lastName:     Faker::Name.unique.last_name,
+  email:        'test3@gmail.com',
+  password:     'helloworld'
+)
+
+test4 = User.create!(
+  firstName:    Faker::Name.first_name,
+  lastName:     Faker::Name.unique.last_name,
+  email:        'test4@gmail.com',
+  password:     'helloworld'
+)
 
 
 users = User.all
