@@ -31,6 +31,10 @@ divName5 = Division.create!(
   title:    "Junior College"
 )
 
+file = "db/HerokuTestingCommonSeparatedHerokuSizeSortedmasterFinalNames.csv"
+
+Program.import(file)
+
 # create User turned off for Heroku
 #
 #
