@@ -11,7 +11,7 @@ class ProgramsController < ApplicationController
 
   end
 
-  def import1
+  def import
     Program.import(params[:file])
     redirect_to root_url, notice: "Program Data Imported!"
   end
