@@ -65,9 +65,15 @@ class SportsController < ApplicationController
     @athlete = Athlete.find(@sport.athlete_id)
     @divisionNames = Division.all
     #p @divisionNames
-    #User.joins(:projects).where(projects: { zipcode: 30332 })
+
+
+
+    #@myprograms = Myprogram.eager_load(:program).order("program.collegeName DESC").where(sport_id: @sport.id).all
+
+
+
     @myprograms = Myprogram.where(sport_id: @sport.id).all
-    p @myprograms
+
     #@myprograms.program.sort_by!(&:collegeName)
 
     #refactor messages out below
